@@ -1,5 +1,5 @@
 {
-  "name": "alekhine",
+  "name": "equine",
   "version": "0.0.0",
   "description": "minimal lichess client for node",
   "main": "dist/index.js",
