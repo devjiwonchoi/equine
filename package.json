@@ -1,0 +1,13 @@
+{
+  "name": "alekhine",
+  "version": "0.0.0",
+  "description": "minimal lichess client for node",
+  "main": "dist/index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Jiwon Choi",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.2.2"
+  }
+}
