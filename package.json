@@ -3,11 +3,27 @@
   "version": "0.0.0",
   "description": "minimal lichess client for node",
   "main": "dist/index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "jest"
+  },
   "keywords": [],
   "author": "Jiwon Choi",
   "license": "MIT",
   "dependencies": {
+    "node-fetch": "^2.6.7"
+  },
+  "devDependencies": {
+    "@swc/jest": "^0.2.29",
+    "@types/jest": "^29.5.4",
+    "@types/node": "^20.5.8",
+    "@types/node-fetch": "2.6.4",
+    "dotenv": "^16.3.1",
+    "jest": "^29.6.4",
     "typescript": "^5.2.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(t|j)sx?$": "@swc/jest"
+    }
   }
 }
