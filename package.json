@@ -6,7 +6,7 @@
   "scripts": {},
   "keywords": [],
   "author": "Jiwon Choi",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "typescript": "^5.2.2"
   }
