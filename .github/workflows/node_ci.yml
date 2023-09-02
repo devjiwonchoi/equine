@@ -1,5 +1,4 @@
-name: Node build and test
-
+name: Node CI
 on:
   push:
     branches: [main]
