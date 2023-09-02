@@ -2,26 +2,32 @@ import fetch from 'node-fetch'
 import { LichessHeaders } from './types'
 import { LICHESS_API_URL } from './constants'
 
+const ACCOUNT_API_URL = `${LICHESS_API_URL}/account`
+
 export class Account {
-  constructor(private headers: LichessHeaders) {}
+  constructor(private readonly headers: LichessHeaders) {}
+
   public profile() {
-    return fetch(`${LICHESS_API_URL}/account`, {
+    return fetch(ACCOUNT_API_URL, {
       headers: this.headers,
     })
   }
+
   public email() {
-    return fetch(`${LICHESS_API_URL}/account/email`, {
+    return fetch(`${ACCOUNT_API_URL}/email`, {
       headers: this.headers,
     })
   }
+
   public preferences() {
-    return fetch(`${LICHESS_API_URL}/account/preferences`, {
+    return fetch(`${ACCOUNT_API_URL}/preferences`, {
       headers: this.headers,
     })
   }
+
   public kidMode(enable?: boolean) {
     const hasEnable = typeof enable === 'boolean'
-    return fetch(`${LICHESS_API_URL}/account/kid?v=${enable}`, {
+    return fetch(`${ACCOUNT_API_URL}/kid?v=${enable}`, {
       method: hasEnable ? 'POST' : 'GET',
       headers: this.headers,
     })
