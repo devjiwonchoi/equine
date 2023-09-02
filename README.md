@@ -1,5 +1,13 @@
-# equine
+# equine 🚧
 
 > minimal lichess client for node
 
-[![NPM](https://img.shields.io/npm/v/equine.svg)](https://www.npmjs.com/package/equine)
+<p align="left">
+  <a href="https://npm.im/equine">
+    <img src="https://badgen.net/npm/v/equine">
+  </a>
+
+  <a href="https://github.com/devjiwonchoi/equine/actions?workflow=CI">
+    <img src="https://github.com/devjiwonchoi/equine/actions/workflows/node_ci.yml/badge.svg">
+  </a>
+</p>
