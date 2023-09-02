@@ -28,6 +28,11 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
 
+      - name: Create env file
+        run: |
+          touch .env
+          echo LICHESS_TOKEN=${{ secrets.LICHESS_TOKEN }} >> .env
+
       - name: Run Test
         run: |
           pnpm build
