@@ -83,15 +83,14 @@ export class User {
     )
   }
 
-  // TODO: investigate API, currently is returning undefined
-  // public note({ username, text }: GetUser) {
-  //   const hasText = typeof text === 'string' && text.length > 0
-  //   return fetch(`${LICHESS_API_URL}/user/${username}/note`, {
-  //     headers: this.headers,
-  //     method: hasText ? 'POST' : 'GET',
-  //     body: text,
-  //   })
-  // }
+  public note({ username, text }: GetUser) {
+    const hasText = typeof text === 'string' && text.length > 0
+    return fetch(`${LICHESS_API_URL}/user/${username}/note`, {
+      headers: this.headers,
+      method: hasText ? 'POST' : 'GET',
+      body: hasText ? new URLSearchParams({ text }) : undefined,
+    })
+  }
 }
 
 export class LeaderBoard {

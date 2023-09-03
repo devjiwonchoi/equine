@@ -86,26 +86,26 @@ describe('user.autocomplete()', () => {
   })
 })
 
-// TODO: investigate API, currently is returning undefined
-// describe('user.note()', () => {
-//   it('should get user note', async () => {
-//     const res = await client.user.note({
-//       username: 'devjiwonchoi',
-//     })
-//     const data = await res.json()
-//     expect(data[0]).toHaveProperty('from')
-//     expect(data[0]).toHaveProperty('to')
-//   })
+describe('user.note()', () => {
+  it('should get user note', async () => {
+    const res = await client.user.note({
+      username: 'devjiwonchoi',
+    })
+    const data = await res.json()
+    // TODO: check inside array also
+    expect(Array.isArray(data)).toBe(true)
+    expect(data[0]).toHaveProperty('text')
+  })
 
-//   it('should post user note', async () => {
-//     const res = await client.user.note({
-//       username: 'devjiwonchoi',
-//       text: 'test',
-//     })
-//     const data = await res.json()
-//     expect(data.ok).toBe(true)
-//   })
-// })
+  it('should post user note', async () => {
+    const res = await client.user.note({
+      username: 'devjiwonchoi',
+      text: 'test',
+    })
+    const data = await res.json()
+    expect(data.ok).toBe(true)
+  })
+})
 
 describe('leaderboard.info()', () => {
   it('should get string[] of users in the given leaderboard', async () => {
