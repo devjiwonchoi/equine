@@ -65,3 +65,23 @@ describe('users.streaming()', () => {
     expect(data.every((user: any) => user.hasOwnProperty('id'))).toBe(true)
   })
 })
+
+describe('users.leaderboard.info()', () => {
+  it('should get string[] of users in the given leaderboard', async () => {
+    const res = await client.users.leaderboard.info({
+      nb: 10,
+      perfType: 'bullet',
+    })
+    const data = await res.json()
+    expect(data).toHaveProperty('users')
+  })
+})
+
+describe('users.leaderboard.topTens()', () => {
+  it('should get top 10 users per leaderboard', async () => {
+    const res = await client.users.leaderboard.topTens()
+    const data = await res.json()
+    expect(data).toHaveProperty('bullet')
+    expect(data).toHaveProperty('blitz')
+  })
+})

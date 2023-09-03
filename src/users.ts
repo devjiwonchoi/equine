@@ -2,8 +2,29 @@ import fetch from 'node-fetch'
 import { LichessHeaders, GetUsers, GetUser } from './types'
 import { LICHESS_API_URL } from './constants'
 
-export class Users {
+class LeaderBoard {
   constructor(private readonly headers: LichessHeaders) {}
+
+  public info({ nb, perfType }: { nb: number; perfType: string }) {
+    return fetch(`${LICHESS_API_URL}/player/top/${nb}/${perfType}`, {
+      headers: this.headers,
+    })
+  }
+
+  // TODO: define perfTypes
+  public topTens() {
+    return fetch(`${LICHESS_API_URL}/player`, {
+      headers: this.headers,
+    })
+  }
+}
+
+export class Users {
+  public leaderboard: LeaderBoard
+
+  constructor(private readonly headers: LichessHeaders) {
+    this.leaderboard = new LeaderBoard(this.headers)
+  }
 
   public info({ ids }: GetUsers) {
     if (Array.isArray(ids)) ids = ids.join(',')
@@ -89,23 +110,6 @@ export class User {
       headers: this.headers,
       method: hasText ? 'POST' : 'GET',
       body: hasText ? new URLSearchParams({ text }) : undefined,
-    })
-  }
-}
-
-export class LeaderBoard {
-  constructor(private readonly headers: LichessHeaders) {}
-
-  public info({ nb, perfType }: { nb: number; perfType: string }) {
-    return fetch(`${LICHESS_API_URL}/player/top/${nb}/${perfType}`, {
-      headers: this.headers,
-    })
-  }
-
-  // TODO: define perfTypes
-  public topTens() {
-    return fetch(`${LICHESS_API_URL}/player`, {
-      headers: this.headers,
     })
   }
 }

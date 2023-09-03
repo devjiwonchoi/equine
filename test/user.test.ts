@@ -105,23 +105,3 @@ describe('user.note()', () => {
     expect(data.ok).toBe(true)
   })
 })
-
-describe('leaderboard.info()', () => {
-  it('should get string[] of users in the given leaderboard', async () => {
-    const res = await client.leaderboard.info({
-      nb: 10,
-      perfType: 'bullet',
-    })
-    const data = await res.json()
-    expect(data).toHaveProperty('users')
-  })
-})
-
-describe('leaderboard.topTens()', () => {
-  it('should get top 10 users per leaderboard', async () => {
-    const res = await client.leaderboard.topTens()
-    const data = await res.json()
-    expect(data).toHaveProperty('bullet')
-    expect(data).toHaveProperty('blitz')
-  })
-})
