@@ -76,15 +76,14 @@ describe('user.autocomplete()', () => {
     )
   })
 
-  // TODO: investigate API, currently is returning undefined
-  // it('should get string[] of username(s), friends prior', async () => {
-  //   const res = await client.user.autocomplete({
-  //     term: 'devjiwon',
-  //     friendPrior: true,
-  //   })
-  //   const data = await res.json()
-  //   expect(data.result).toContain('devjiwonchoi')
-  // })
+  it('should get string[] of username(s), friends prior', async () => {
+    const res = await client.user.autocomplete({
+      term: 'devjiwon',
+      friendPrior: true,
+    })
+    const data = await res.json()
+    expect(data).toContain('devjiwonchoi')
+  })
 })
 
 // TODO: investigate API, currently is returning undefined

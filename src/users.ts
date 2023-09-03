@@ -76,8 +76,7 @@ export class User {
 
   public autocomplete({ term, details = false, friendPrior = false }: GetUser) {
     return fetch(
-      // TODO: investigate API, currently `friend` is returning undefined
-      `${LICHESS_API_URL}/player/autocomplete?term=${term}&object=${details}&friend=${false}`,
+      `${LICHESS_API_URL}/player/autocomplete?term=${term}&object=${details}&friend=${friendPrior}`,
       {
         headers: this.headers,
       }
