@@ -92,7 +92,6 @@ describe('user.note()', () => {
       username: 'devjiwonchoi',
     })
     const data = await res.json()
-    // TODO: check inside array also
     expect(Array.isArray(data)).toBe(true)
     expect(data[0]).toHaveProperty('text')
   })
