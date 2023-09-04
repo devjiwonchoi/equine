@@ -32,4 +32,10 @@ export class Account {
       headers: this.headers,
     })
   }
+
+  public ongoing(nb?: number) {
+    return fetch(`${ACCOUNT_API_URL}/playing?nb=${nb}`, {
+      headers: this.headers,
+    })
+  }
 }
