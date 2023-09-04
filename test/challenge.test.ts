@@ -3,7 +3,9 @@ import { client } from './test-utils'
 describe('Challenge', () => {
   it('should list challenges', async () => {
     const res = await client.challenge.list()
-    expect(res.status).toBe(200)
+    const data = await res.json()
+    expect(data).toHaveProperty('in')
+    expect(data).toHaveProperty('out')
   })
   it('should create and cancel a challenge', async () => {
     const res = await client.challenge.create('LeelaChess')

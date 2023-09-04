@@ -13,6 +13,7 @@ export const aiChallengeId = async () => {
   return data.id as string
 }
 
-export const forceStopAIChallenge = (challengeId: string) => {
-  client.challenge.cancel(challengeId)
+export const abortAiChallenge = async (gameId: string) => {
+  await client.board.abort(gameId)
 }
+
