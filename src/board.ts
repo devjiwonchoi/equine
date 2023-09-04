@@ -11,48 +11,49 @@ export class Board {
     })
   }
 
-  public seek({
-    mode,
-    options: {
-      rated = false,
-      variant = 'standard',
-      color = 'random',
-      ratingRange = '',
-      time,
-      increment,
-      days,
-    },
-  }: BoardSeek) {
-    const ratedString = new Boolean(rated).toString()
-    if (mode === 'realtime' && time && increment) {
-      return fetch(`${LICHESS_API_URL}/board/seek`, {
-        headers: this.headers,
-        method: 'POST',
-        body: new URLSearchParams({
-          rated: ratedString,
-          variant,
-          color,
-          ratingRange,
-          time: time.toString(),
-          increment: increment.toString(),
-        }),
-      })
-    }
-    if (mode === 'correspondence' && days) {
-      return fetch(`${LICHESS_API_URL}/board/seek`, {
-        headers: this.headers,
-        method: 'POST',
-        body: new URLSearchParams({
-          rated: ratedString,
-          variant,
-          color,
-          ratingRange,
-          days: days.toString(),
-        }),
-      })
-    }
-    return undefined
-  }
+  // TODO: seek()
+  // public seek({
+  //   mode,
+  //   options: {
+  //     rated = false,
+  //     variant = 'standard',
+  //     color = 'random',
+  //     ratingRange = '',
+  //     time,
+  //     increment,
+  //     days,
+  //   },
+  // }: BoardSeek) {
+  //   const ratedString = new Boolean(rated).toString()
+  //   if (mode === 'realtime' && time && increment) {
+  //     return fetch(`${LICHESS_API_URL}/board/seek`, {
+  //       headers: this.headers,
+  //       method: 'POST',
+  //       body: new URLSearchParams({
+  //         rated: ratedString,
+  //         variant,
+  //         color,
+  //         ratingRange,
+  //         time: time.toString(),
+  //         increment: increment.toString(),
+  //       }),
+  //     })
+  //   }
+  //   if (mode === 'correspondence' && days) {
+  //     return fetch(`${LICHESS_API_URL}/board/seek`, {
+  //       headers: this.headers,
+  //       method: 'POST',
+  //       body: new URLSearchParams({
+  //         rated: ratedString,
+  //         variant,
+  //         color,
+  //         ratingRange,
+  //         days: days.toString(),
+  //       }),
+  //     })
+  //   }
+  //   return undefined
+  // }
 
   public stream(gameId: string) {
     return fetch(`${LICHESS_API_URL}/board/game/stream/${gameId}`, {
