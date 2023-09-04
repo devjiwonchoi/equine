@@ -9,7 +9,7 @@ describe('Challenge', () => {
   })
   it('should create and cancel a challenge', async () => {
     const botName =
-      process.env.NODE_ENV === 'test' ? 'Bot1' : 'devjiwonchoi_equine'
+      process.env.NODE_ENV === 'test' ? 'devjiwonchoi_equine' : 'Bot1'
     const res = await client.challenge.create(botName)
     const data = await res.json()
     const res2 = await client.challenge.cancel(data.challenge.id)

@@ -33,6 +33,8 @@ jobs:
           echo LICHESS_TOKEN=${{ secrets.LICHESS_TOKEN }} >> .env
 
       - name: Run Test
+        env:
+          NODE_ENV: test
         run: |
           pnpm build
           pnpm test
