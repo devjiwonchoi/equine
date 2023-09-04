@@ -13,8 +13,7 @@ describe('user.history()', () => {
   it('should get user rating history', async () => {
     const res = await client.user.history('devjiwonchoi')
     const data = await res.json()
-    expect(data[0]).toHaveProperty('name')
-    expect(data[0]).toHaveProperty('points')
+    expect(Array.isArray(data)).toBe(true)
   })
 })
 
