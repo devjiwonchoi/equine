@@ -1,5 +1,6 @@
 import { Account } from './account'
 import { Board } from './board'
+import { Bot } from './bot'
 import { Challenge } from './challenge'
 import { Users, User } from './users'
 import { Analysis, Message, Simuls, TV } from './minors'
@@ -11,6 +12,7 @@ export class Client {
   public account: Account
   public analysis: Analysis
   public board: Board
+  public bot: Bot
   public challenge: Challenge
   public message: Message
   public simuls: Simuls
@@ -25,6 +27,7 @@ export class Client {
     this.account = new Account(this.headers)
     this.analysis = new Analysis(this.headers)
     this.board = new Board(this.headers)
+    this.bot = new Bot(this.headers)
     this.challenge = new Challenge(this.headers)
     this.message = new Message(this.headers)
     this.simuls = new Simuls(this.headers)
