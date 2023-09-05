@@ -38,4 +38,10 @@ export class Account {
       headers: this.headers,
     })
   }
+
+  public following() {
+    return fetch(`${LICHESS_API_URL}/rel/following`, {
+      headers: this.headers,
+    })
+  }
 }

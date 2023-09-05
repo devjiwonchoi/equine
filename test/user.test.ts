@@ -103,3 +103,19 @@ describe('user.note()', () => {
     expect(data.ok).toBe(true)
   })
 })
+
+describe('user.follow()', () => {
+  it('should follow a user', async () => {
+    const res = await client.user.follow('devjiwonchoi')
+    const data = await res.json()
+    expect(data.ok).toBe(true)
+  })
+})
+
+describe('user.unfollow()', () => {
+  it('should unfollow a user', async () => {
+    const res = await client.user.unfollow('devjiwonchoi')
+    const data = await res.json()
+    expect(data.ok).toBe(true)
+  })
+})

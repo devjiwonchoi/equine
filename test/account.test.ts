@@ -78,3 +78,11 @@ describe('account.ongoing()', () => {
     expect(data).toHaveProperty('nowPlaying')
   })
 })
+
+describe('account.following()', () => {
+  it('should get following users', async () => {
+    const res = await client.account.following()
+    const data = await res.json()
+    expect(data).toHaveProperty('id')
+  })
+})
