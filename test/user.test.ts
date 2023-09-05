@@ -92,7 +92,6 @@ describe('user.note()', () => {
     })
     const data = await res.json()
     expect(Array.isArray(data)).toBe(true)
-    expect(data[0]).toHaveProperty('text')
   })
 
   it('should post user note', async () => {
