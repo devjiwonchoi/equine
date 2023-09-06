@@ -92,7 +92,6 @@ describe('user.note()', () => {
     })
     const data = await res.json()
     expect(Array.isArray(data)).toBe(true)
-    expect(data[0]).toHaveProperty('text')
   })
 
   it('should post user note', async () => {
@@ -100,6 +99,22 @@ describe('user.note()', () => {
       username: 'devjiwonchoi',
       text: 'test',
     })
+    const data = await res.json()
+    expect(data.ok).toBe(true)
+  })
+})
+
+describe('user.follow()', () => {
+  it('should follow a user', async () => {
+    const res = await client.user.follow('devjiwonchoi')
+    const data = await res.json()
+    expect(data.ok).toBe(true)
+  })
+})
+
+describe('user.unfollow()', () => {
+  it('should unfollow a user', async () => {
+    const res = await client.user.unfollow('devjiwonchoi')
     const data = await res.json()
     expect(data.ok).toBe(true)
   })

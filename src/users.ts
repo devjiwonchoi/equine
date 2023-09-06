@@ -112,4 +112,18 @@ export class User {
       body: hasText ? new URLSearchParams({ text }) : undefined,
     })
   }
+
+  public follow(username: string) {
+    return fetch(`${LICHESS_API_URL}/rel/follow/${username}`, {
+      method: 'POST',
+      headers: this.headers,
+    })
+  }
+
+  public unfollow(username: string) {
+    return fetch(`${LICHESS_API_URL}/rel/unfollow/${username}`, {
+      method: 'POST',
+      headers: this.headers,
+    })
+  }
 }

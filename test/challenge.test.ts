@@ -8,9 +8,7 @@ describe('Challenge', () => {
     expect(data).toHaveProperty('out')
   })
   it('should create and cancel a challenge', async () => {
-    const botName =
-      process.env.NODE_ENV === 'test' ? 'devjiwonchoi_equine' : 'Bot1'
-    const res = await client.challenge.create(botName)
+    const res = await client.challenge.create('LeelaChess')
     const data = await res.json()
     const res2 = await client.challenge.cancel(data.challenge.id)
     const data2 = await res2.json()
