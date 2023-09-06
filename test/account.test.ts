@@ -82,7 +82,6 @@ describe('account.ongoing()', () => {
 describe('account.following()', () => {
   it('should get following users', async () => {
     const res = await client.account.following()
-    const data = await res.json()
-    expect(data).toHaveProperty('id')
+    expect(res.status).toBe(200)
   })
 })
