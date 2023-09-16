@@ -1,11 +1,31 @@
-# Introduction
- 
-Welcome to Nextra! This is a basic docs template. You can use it as a starting point for your own project :)
+# What is Equine?
 
-## What is Nextra?
+Equine is minimal, zero-config, asynchronous [Lichess API](https://lichess.org/api) Client written in TypeScript.
 
-A **simple**, **powerful** and **flexible** site generation framework with everything you love from Next.js.
+## Basic Usage
 
-## Documentation
+```bash
+pnpm i equine
+```
 
-The documentation is available at [https://nextra.site](https://nextra.site).
+### CommonJS (CJS)
+  
+```js
+const { Client } = require('equine')
+
+const client = new Client()
+
+await client.//...
+```
+
+### ES Modules (ESM)
+
+```js
+import { Client } from 'equine'
+
+const client = new Client()
+
+await client.//...
+```
+
+Let's dive in to deeper usage of Equine.
