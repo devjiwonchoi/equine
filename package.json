@@ -7,6 +7,7 @@
   "scripts": {
     "build": "bunchee",
     "clean": "rm -rf dist",
+    "dev": "cd ./docs && pnpm dev",
     "test": "dotenv -e .env jest"
   },
   "dependencies": {
