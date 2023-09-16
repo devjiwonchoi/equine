@@ -71,6 +71,15 @@ describe('account.kidMode()', () => {
   })
 })
 
+describe('account.challenges()', () => {
+  it('should get challenges', async () => {
+    const res = await client.account.challenges()
+    const data = await res.json()
+    expect(data).toHaveProperty('in')
+    expect(data).toHaveProperty('out')
+  })
+})
+
 describe('account.ongoing()', () => {
   it('should get ongoing games', async () => {
     const res = await client.account.ongoing()

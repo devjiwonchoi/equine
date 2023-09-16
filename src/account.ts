@@ -33,6 +33,12 @@ export class Account {
     })
   }
 
+  public challenges() {
+    return fetch(`${LICHESS_API_URL}/challenge`, {
+      headers: this.headers,
+    })
+  }
+
   public ongoing(nb?: number) {
     return fetch(`${ACCOUNT_API_URL}/playing?nb=${nb}`, {
       headers: this.headers,
