@@ -5,12 +5,6 @@ import { LICHESS_API_URL } from './constants'
 export class Challenge {
   constructor(private readonly headers: LichessHeaders) {}
 
-  public list() {
-    return fetch(`${LICHESS_API_URL}/challenge`, {
-      headers: this.headers,
-    })
-  }
-
   public create(username: string) {
     return fetch(`${LICHESS_API_URL}/challenge/${username}`, {
       headers: this.headers,
