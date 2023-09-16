@@ -1,0 +1,79 @@
+# Challenges
+
+> Lichess API Docs - [Challenge](https://lichess.org/api#tag/Challenges)
+
+### Create a challenge
+
+```ts
+client.challenge.create(username: string)
+```
+
+### Accept a challenge
+
+```ts
+client.challenge.accept(challengeId: string)
+```
+
+### Decline a challenge
+
+```ts
+client.challenge.decline(challengeId: string)
+```
+
+### Cancel a challenge
+
+```ts
+client.challenge.cancel(challengeId: string)
+```
+
+### Challenge the AI
+
+```ts
+// TODO: specify types
+client.challenge.ai({
+  level,
+  clockLimit,
+  clockIncrement,
+  days,
+  color,
+  variant,
+  fen,
+})
+```
+
+### Open-ended challenge
+
+```ts
+// TODO: specify types
+client.challenge.open({
+  rated,
+  clockLimit,
+  clockIncrement,
+  days,
+  color,
+  variant,
+  fen,
+  name,
+  rules,
+  users,
+  expiresAt,
+})
+```
+
+### Start clocks of a game
+
+```ts
+client.challenge.start({ gameId: string, token1: string, token2: string })
+```
+
+### Add time to the opponent clock
+
+```ts
+client.challenge.grant({ gameId: string, seconds: number })
+```
+
+### Admin challenge tokens
+
+```ts
+client.challenge.admin({ users: string | string[], description: string })
+```
