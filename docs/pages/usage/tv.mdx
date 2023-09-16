@@ -1,0 +1,30 @@
+# TV
+
+> Lichess API Docs - [TV](https://lichess.org/api#tag/TV)
+
+### Get current TV games
+
+```ts
+client.tv.channels()
+```
+
+### Stream current TV games
+
+```ts
+client.tv.stream()
+```
+
+### Get best ongoing games of a TV channel
+
+```ts
+// TODO: specify types
+client.tv.ongoing({
+  channel,
+  nb,
+  moves,
+  pgnInJson,
+  tags,
+  clocks,
+  opening,
+})
+```
