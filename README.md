@@ -1,4 +1,4 @@
-# equine 🚧
+# equine 🐴
 
 > minimal lichess client for node
 
@@ -11,3 +11,7 @@
     <img src="https://github.com/devjiwonchoi/equine/actions/workflows/node_ci.yml/badge.svg">
   </a>
 </p>
+
+## Documentation
+
+See [Equine Docs](https://equine.vercel.app) for more information.
