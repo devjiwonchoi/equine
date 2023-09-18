@@ -27,7 +27,7 @@ devDependencies:
     version: 2.6.4
   bunchee:
     specifier: ^3.6.1
-    version: 3.7.1(typescript@5.2.2)
+    version: 3.8.0(typescript@5.2.2)
   dotenv-cli:
     specifier: ^7.3.0
     version: 7.3.0
@@ -1319,8 +1319,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /bunchee@3.7.1(typescript@5.2.2):
-    resolution: {integrity: sha512-dFIpye8NlgQ/GC/1Q8TXWJCBdsyeZUo9UPGNVNKZRkbhgWi1C1mQgd0uHUCaiZzw47pAFoHBNppYNknzjbkwmQ==}
+  /bunchee@3.8.0(typescript@5.2.2):
+    resolution: {integrity: sha512-8W3DC/mC5GIx6N3Rn67/Dqo6TRS+nvB12XsBIgO4S1ZEsipdv8E/ytZ9XWfFGibw7jlsmAwSTaEIgc1jcQg1zg==}
     engines: {node: '>= 16'}
     hasBin: true
     peerDependencies:
