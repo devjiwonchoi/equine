@@ -27,7 +27,7 @@ devDependencies:
     version: 2.6.6
   bunchee:
     specifier: ^3.6.1
-    version: 3.8.0(typescript@5.2.2)
+    version: 3.9.0(typescript@5.2.2)
   dotenv-cli:
     specifier: ^7.3.0
     version: 7.3.0
@@ -1324,8 +1324,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /bunchee@3.8.0(typescript@5.2.2):
-    resolution: {integrity: sha512-8W3DC/mC5GIx6N3Rn67/Dqo6TRS+nvB12XsBIgO4S1ZEsipdv8E/ytZ9XWfFGibw7jlsmAwSTaEIgc1jcQg1zg==}
+  /bunchee@3.9.0(typescript@5.2.2):
+    resolution: {integrity: sha512-zmMCEg2FG6TIwPihOb23gXKMk0vrCXaM47++NbMkN2VTquzsLKnk6V3kYkgd3MLg9vLtpdsfnAIkl54w63pg2Q==}
     engines: {node: '>= 16'}
     hasBin: true
     peerDependencies:
@@ -1341,11 +1341,12 @@ packages:
       '@rollup/plugin-node-resolve': 15.2.1(rollup@3.29.0)
       '@rollup/plugin-replace': 5.0.2(rollup@3.29.0)
       '@rollup/plugin-wasm': 6.1.3(rollup@3.29.0)
+      '@rollup/pluginutils': 5.0.4(rollup@3.29.0)
       '@swc/core': 1.3.88(@swc/helpers@0.5.1)
       '@swc/helpers': 0.5.1
       arg: 5.0.2
       pretty-bytes: 5.6.0
-      publint: 0.1.16
+      publint: 0.2.2
       rollup: 3.29.0
       rollup-plugin-dts: 6.0.1(rollup@3.29.0)(typescript@5.2.2)
       rollup-plugin-swc3: 0.10.1(@swc/core@1.3.88)(rollup@3.29.0)
@@ -2661,8 +2662,8 @@ packages:
       sisteransi: 1.0.5
     dev: true
 
-  /publint@0.1.16:
-    resolution: {integrity: sha512-wJgk7HnXDT5Ap0DjFYbGz78kPkN44iQvDiaq8P63IEEyNU9mYXvaMd2cAyIM6OgqXM/IA3CK6XWIsRq+wjNpgw==}
+  /publint@0.2.2:
+    resolution: {integrity: sha512-2t2IO6Y8Z+QBNLG89bpRhTQH7Ifn/83Kr0dVVdmOybq7GAT6+M4YGZd5AhtfMJbYPmbT7YD469pDKLCK94Q2+Q==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
