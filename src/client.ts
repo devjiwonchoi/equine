@@ -4,9 +4,12 @@ import { Bot } from './bot'
 import { Challenge } from './challenge'
 import { Users, User } from './users'
 import { Analysis, Message, Simuls, TV } from './minors'
+import { fetcher } from './utils'
 import { LichessHeaders } from './types'
 
-export class Client {
+export class Equine {
+  private fetcher: Function
+  // TODO: remove this and integrate fetcher
   private readonly headers: LichessHeaders
 
   public account: Account
@@ -20,11 +23,16 @@ export class Client {
   public user: User
   public users: Users
 
-  constructor(readonly token: string) {
+  constructor(private readonly token: string) {
+    this.fetcher = (endpoint: string, post?: boolean) =>
+      fetcher({ endpoint, token: this.token, post })
+
+    // TODO: remove this and integrate fetcher
     this.headers = {
       Authorization: `Bearer ${this.token}`,
     }
-    this.account = new Account(this.headers)
+
+    this.account = new Account(this.fetcher)
     this.analysis = new Analysis(this.headers)
     this.board = new Board(this.headers)
     this.bot = new Bot(this.headers)

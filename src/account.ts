@@ -1,52 +1,31 @@
-import { LichessHeaders } from './types'
-import { LICHESS_API_URL } from './constants'
-
-const ACCOUNT_API_URL = `${LICHESS_API_URL}/account`
-
 export class Account {
-  constructor(private readonly headers: LichessHeaders) {}
+  constructor(private readonly fetcher: Function) {}
 
   public profile() {
-    return fetch(ACCOUNT_API_URL, {
-      headers: this.headers,
-    })
+    return this.fetcher(`/account`)
   }
 
   public email() {
-    return fetch(`${ACCOUNT_API_URL}/email`, {
-      headers: this.headers,
-    })
+    return this.fetcher(`/account/email`)
   }
 
   public preferences() {
-    return fetch(`${ACCOUNT_API_URL}/preferences`, {
-      headers: this.headers,
-    })
+    return this.fetcher(`/account/preferences`)
   }
 
-  public kidMode(enable?: boolean) {
-    const hasEnable = typeof enable === 'boolean'
-    return fetch(`${ACCOUNT_API_URL}/kid?v=${enable}`, {
-      method: hasEnable ? 'POST' : 'GET',
-      headers: this.headers,
-    })
+  public kidMode({ enable }: { enable?: boolean } = {}) {
+    return this.fetcher(`/account/kid?v=${enable}`, enable !== undefined)
   }
 
   public challenges() {
-    return fetch(`${LICHESS_API_URL}/challenge`, {
-      headers: this.headers,
-    })
+    return this.fetcher(`/challenge`)
   }
 
-  public ongoing(nb?: number) {
-    return fetch(`${ACCOUNT_API_URL}/playing?nb=${nb}`, {
-      headers: this.headers,
-    })
+  public ongoing({ limit }: { limit?: number } = {}) {
+    return this.fetcher(`/account/playing?nb=${limit}`)
   }
 
   public following() {
-    return fetch(`${LICHESS_API_URL}/rel/following`, {
-      headers: this.headers,
-    })
+    return this.fetcher(`/rel/following`)
   }
 }
