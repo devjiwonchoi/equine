@@ -1,4 +1,3 @@
-import fetch from 'node-fetch'
 import { LichessHeaders, GameVariant } from './types'
 import { LICHESS_API_URL } from './constants'
 
