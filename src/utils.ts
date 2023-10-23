@@ -1,18 +1,20 @@
+import { LICHESS_API_URL } from './constants'
+
 export async function fetcher({
-  url,
+  endpoint,
   token,
-  method,
+  post,
 }: {
-  url: string
+  endpoint: string
   token: string
-  method: 'GET' | 'POST'
+  post?: boolean
 }) {
   return (
-    await fetch(url, {
+    await fetch(`${LICHESS_API_URL}${endpoint}`, {
       headers: {
         Authorization: `Bearer ${token}`,
-        method,
       },
+      method: post ? 'POST' : 'GET',
     })
   ).json()
 }

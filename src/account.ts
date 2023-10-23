@@ -1,65 +1,55 @@
 import { fetcher } from './utils'
-import { LICHESS_API_URL } from './constants'
-
-const ACCOUNT_API_URL = `${LICHESS_API_URL}/account`
 
 export class Account {
   constructor(private readonly token: string) {}
 
   public profile() {
     return fetcher({
-      url: `${LICHESS_API_URL}/account`,
+      endpoint: `/account`,
       token: this.token,
-      method: 'GET',
     })
   }
 
   public email() {
     return fetcher({
-      url: `${LICHESS_API_URL}/account/email`,
+      endpoint: `/account/email`,
       token: this.token,
-      method: 'GET',
     })
   }
 
   public preferences() {
     return fetcher({
-      url: `${LICHESS_API_URL}/account/preferences`,
+      endpoint: `/account/preferences`,
       token: this.token,
-      method: 'GET',
     })
   }
 
-  public kidMode(enable?: boolean) {
-    const hasEnableValue = enable !== undefined
+  public kidMode({ enable }: { enable?: boolean } = {}) {
     return fetcher({
-      url: `${LICHESS_API_URL}/account/kid?v=${enable}`,
+      endpoint: `/account/kid?v=${enable}`,
       token: this.token,
-      method: hasEnableValue ? 'POST' : 'GET',
+      post: enable !== undefined,
     })
   }
 
   public challenges() {
     return fetcher({
-      url: `${LICHESS_API_URL}/account/challenge`,
+      endpoint: `/challenge`,
       token: this.token,
-      method: 'GET',
     })
   }
 
-  public ongoing(nb?: number) {
+  public ongoing({ limit }: { limit?: number } = {}) {
     return fetcher({
-      url: `${LICHESS_API_URL}/account/playing?nb=${nb}`,
+      endpoint: `/account/playing?nb=${limit}`,
       token: this.token,
-      method: 'GET',
     })
   }
 
   public following() {
     return fetcher({
-      url: `${LICHESS_API_URL}/rel/following`,
+      endpoint: `/rel/following`,
       token: this.token,
-      method: 'GET',
     })
   }
 }

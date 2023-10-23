@@ -1,96 +1,69 @@
 import { client } from './test-utils'
 
-describe('account.profile()', () => {
+describe('profile()', () => {
   it('should get account profile', async () => {
-    const res = await client.account.profile()
-    const data = await res.json()
-    expect(data).toHaveProperty('id')
-    expect(data).toHaveProperty('username')
+    const profile = await client.account.profile()
+    expect(profile).toHaveProperty('id')
+    expect(profile).toHaveProperty('username')
   })
 })
 
-describe('account.email()', () => {
+describe('email()', () => {
   it('should get account email', async () => {
-    const res = await client.account.email()
-    const data = await res.json()
-    expect(data).toHaveProperty('email')
+    const email = await client.account.email()
+    expect(email).toHaveProperty('email')
   })
 })
 
-describe('account.preferences()', () => {
+describe('preferences()', () => {
   it('should get account preferences', async () => {
-    const res = await client.account.preferences()
-    const data = await res.json()
-    expect(data).toHaveProperty('prefs')
+    const preferences = await client.account.preferences()
+    expect(preferences).toHaveProperty('prefs')
   })
 })
 
-describe('account.kidMode()', () => {
+describe('kidMode()', () => {
   it('should get kid mode status', async () => {
-    const res = await client.account.kidMode()
-    const data = await res.json()
-    expect(data).toHaveProperty('kid')
-    expect.extend({
-      toBeBoolean({ kid }) {
-        const pass = typeof kid === 'boolean'
-        if (pass) {
-          return {
-            message: () => `expected ${kid} to be boolean`,
-            pass: true,
-          }
-        } else {
-          return {
-            message: () => `expected ${kid} to be boolean`,
-            pass: false,
-          }
-        }
-      },
-    })
+    const kidMode = await client.account.kidMode()
+    expect(kidMode).toHaveProperty('kid')
   })
 
   it('should enable kid mode', async () => {
-    const res = await client.account.kidMode(true)
-    const data = await res.json()
-    expect(data).toHaveProperty('ok')
-    expect(data.ok).toBe(true)
-
+    await client.account.kidMode({ enable: true })
     const kidMode = await client.account.kidMode()
-    const kidModeData = await kidMode.json()
-    expect(kidModeData.kid).toBe(true)
+    expect(kidMode.kid).toBe(true)
   })
 
   it('should disable kid mode', async () => {
-    const res = await client.account.kidMode(false)
-    const data = await res.json()
-    expect(data).toHaveProperty('ok')
-    expect(data.ok).toBe(true)
-
+    await client.account.kidMode({ enable: false })
     const kidMode = await client.account.kidMode()
-    const kidModeData = await kidMode.json()
-    expect(kidModeData.kid).toBe(false)
+    expect(kidMode.kid).toBe(false)
   })
 })
 
-describe('account.challenges()', () => {
+describe('challenges()', () => {
   it('should get challenges', async () => {
-    const res = await client.account.challenges()
-    const data = await res.json()
-    expect(data).toHaveProperty('in')
-    expect(data).toHaveProperty('out')
+    const challenges = await client.account.challenges()
+    expect(challenges).toHaveProperty('in')
+    expect(challenges).toHaveProperty('out')
   })
 })
 
-describe('account.ongoing()', () => {
+describe('ongoing()', () => {
   it('should get ongoing games', async () => {
-    const res = await client.account.ongoing()
-    const data = await res.json()
-    expect(data).toHaveProperty('nowPlaying')
+    const ongoing = await client.account.ongoing()
+    expect(ongoing).toHaveProperty('nowPlaying')
+  })
+
+  it('should get ongoing games with limit', async () => {
+    const ongoing = await client.account.ongoing({ limit: 1 })
+    expect(ongoing).toHaveProperty('nowPlaying')
   })
 })
 
-describe('account.following()', () => {
+describe('following()', () => {
   it('should get following users', async () => {
-    const res = await client.account.following()
-    expect(res.status).toBe(200)
+    const following = await client.account.following()
+    expect(following).toHaveProperty('id')
   })
 })
