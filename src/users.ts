@@ -1,4 +1,3 @@
-import fetch from 'node-fetch'
 import { LichessHeaders, GetUsers, GetUser } from './types'
 import { LICHESS_API_URL } from './constants'
 
