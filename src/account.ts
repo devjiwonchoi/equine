@@ -1,52 +1,65 @@
-import { LichessHeaders } from './types'
+import { fetcher } from './utils'
 import { LICHESS_API_URL } from './constants'
 
 const ACCOUNT_API_URL = `${LICHESS_API_URL}/account`
 
 export class Account {
-  constructor(private readonly headers: LichessHeaders) {}
+  constructor(private readonly token: string) {}
 
   public profile() {
-    return fetch(ACCOUNT_API_URL, {
-      headers: this.headers,
+    return fetcher({
+      url: `${LICHESS_API_URL}/account`,
+      token: this.token,
+      method: 'GET',
     })
   }
 
   public email() {
-    return fetch(`${ACCOUNT_API_URL}/email`, {
-      headers: this.headers,
+    return fetcher({
+      url: `${LICHESS_API_URL}/account/email`,
+      token: this.token,
+      method: 'GET',
     })
   }
 
   public preferences() {
-    return fetch(`${ACCOUNT_API_URL}/preferences`, {
-      headers: this.headers,
+    return fetcher({
+      url: `${LICHESS_API_URL}/account/preferences`,
+      token: this.token,
+      method: 'GET',
     })
   }
 
   public kidMode(enable?: boolean) {
-    const hasEnable = typeof enable === 'boolean'
-    return fetch(`${ACCOUNT_API_URL}/kid?v=${enable}`, {
-      method: hasEnable ? 'POST' : 'GET',
-      headers: this.headers,
+    const hasEnableValue = enable !== undefined
+    return fetcher({
+      url: `${LICHESS_API_URL}/account/kid?v=${enable}`,
+      token: this.token,
+      method: hasEnableValue ? 'POST' : 'GET',
     })
   }
 
   public challenges() {
-    return fetch(`${LICHESS_API_URL}/challenge`, {
-      headers: this.headers,
+    return fetcher({
+      url: `${LICHESS_API_URL}/account/challenge`,
+      token: this.token,
+      method: 'GET',
     })
   }
 
   public ongoing(nb?: number) {
-    return fetch(`${ACCOUNT_API_URL}/playing?nb=${nb}`, {
-      headers: this.headers,
+    return fetcher({
+      url: `${LICHESS_API_URL}/account/playing?nb=${nb}`,
+      token: this.token,
+      method: 'GET',
     })
   }
 
   public following() {
-    return fetch(`${LICHESS_API_URL}/rel/following`, {
-      headers: this.headers,
+    return fetcher({
+      url: `${LICHESS_API_URL}/rel/following`,
+      token: this.token,
+      method: 'GET',
     })
   }
 }
