@@ -9,6 +9,7 @@ import { LichessHeaders } from './types'
 
 export class Equine {
   public account: Account
+  private fetcher: Function
   // public analysis: Analysis
   // public board: Board
   // public bot: Bot
@@ -20,7 +21,9 @@ export class Equine {
   // public users: Users
 
   constructor(private readonly token: string) {
-    this.account = new Account(this.token)
+    this.fetcher = (endpoint: string, post?: boolean) =>
+      fetcher({ endpoint, token: this.token, post })
+    this.account = new Account(this.fetcher)
     // this.analysis = new Analysis(this.token)
     // this.board = new Board(this.token)
     // this.bot = new Bot(this.token)
