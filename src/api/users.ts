@@ -1,4 +1,4 @@
-import { GetUsers, GetUser } from './types'
+import { GetUsers, GetUser } from '../types'
 
 class LeaderBoard {
   constructor(private readonly fetcher: Function) {}
