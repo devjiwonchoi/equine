@@ -35,42 +35,37 @@ afterAll(async () => {
 
 describe('board.move()', () => {
   it('should move', async () => {
-    const res = await client.board.move({ gameId, move: 'e2e4' })
-    const data = await res.json()
-    expect(data.ok).toBe(true)
+    const move = await client.board.move({ gameId, move: 'e2e4' })
+    expect(move.ok).toBe(true)
   })
 })
 
 describe('board.chat()', () => {
   it('should get chat', async () => {
-    const res = await client.board.chat({ gameId })
-    const data = await res.json()
-    expect(Array.isArray(data)).toBe(true)
+    const chat = await client.board.chat({ gameId })
+    expect(Array.isArray(chat)).toBe(true)
   })
   it('should chat', async () => {
-    const res = await client.board.chat({
+    const chat = await client.board.chat({
       gameId,
       room: 'player',
       text: 'test',
     })
-    const data = await res.json()
-    expect(data.ok).toBe(true)
+    expect(chat.ok).toBe(true)
   })
 })
 
 describe('board.takeback()', () => {
   it('should takeback', async () => {
-    const res = await client.board.takeback({ gameId, accept: true })
-    const data = await res.json()
-    expect(data.ok).toBe(true)
+    const takeback = await client.board.takeback({ gameId, accept: true })
+    expect(takeback.ok).toBe(true)
   })
 })
 
 describe('board.draw()', () => {
   it('should draw', async () => {
-    const res = await client.board.draw({ gameId, accept: true })
-    const data = await res.json()
-    expect(data.ok).toBe(true)
+    const draw = await client.board.draw({ gameId, accept: true })
+    expect(draw.ok).toBe(true)
   })
 })
 
@@ -103,9 +98,8 @@ describe('board.victory()', () => {
     const victoryGameData = await newVictoryGame.json()
     const victoryGameId = victoryGameData.id
 
-    const res = await client.board.victory(victoryGameId)
-    const data = await res.json()
-    expect(data.ok).toBe(true)
+    const victory = await client.board.victory(victoryGameId)
+    expect(victory.ok).toBe(true)
     await client.board.abort(victoryGameId)
   })
 })
