@@ -38,7 +38,7 @@ export class Bot {
     return this.fetcher(`/bot/game/${gameId}/abort`, true)
   }
 
-  public resign(gameId: string) {
+  public resign({ gameId }: { gameId: string }) {
     return this.fetcher(`/bot/game/${gameId}/resign`, true)
   }
 }
