@@ -14,7 +14,7 @@ Equine uses [Native Fetch API](https://nodejs.org/dist/latest-v18.x/docs/api/glo
 ## Basic Usage
 
 ```bash
-pnpm add equine
+npm i equine
 ```
   
 ```ts
@@ -22,7 +22,8 @@ import { Equine } from 'equine'
 
 const lichess = new Equine('LICHESS_API_TOKEN')
 
-const userInfo = await lichess.user.info()
+// Returns the info of the account who owns the token
+const accountInfo = await lichess.account.info()
 ```
 
 Let's dive in to deeper usage of Equine.
