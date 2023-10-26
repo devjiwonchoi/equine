@@ -1,31 +1,29 @@
 # What is Equine?
 
-Equine is minimal, zero-config, asynchronous [Lichess API](https://lichess.org/api) Client written in TypeScript.
+Equine is minimal, zero-config, zero-dependency, asynchronous [Lichess API](https://lichess.org/api) Client written in TypeScript.
+
+Equine uses [Native Fetch API](https://nodejs.org/dist/latest-v18.x/docs/api/globals.html#fetch), which requires Node.js v18 or higher.
+
+> Note: Equine is still in development, supporting limited endpoints for now.
+
+## Requirements
+
+- Node.js v18 or higher
+- [Lichess API Token](https://lichess.org/account/oauth/token)
 
 ## Basic Usage
 
 ```bash
-pnpm i equine
+npm i equine
 ```
-
-### CommonJS (CJS)
   
-```js
-const { Client } = require('equine')
+```ts
+import { Equine } from 'equine'
 
-const client = new Client()
+const lichess = new Equine('LICHESS_API_TOKEN')
 
-await client.//...
-```
-
-### ES Modules (ESM)
-
-```js
-import { Client } from 'equine'
-
-const client = new Client()
-
-await client.//...
+// Returns the info of the account who owns the token
+const accountInfo = await lichess.account.info()
 ```
 
 Let's dive in to deeper usage of Equine.

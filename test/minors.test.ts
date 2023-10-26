@@ -1,8 +1,8 @@
-import { client } from './test-utils'
+import { lichess } from './test-utils'
 
 describe('analysis.evaluate()', () => {
   it('should return an analysis report', async () => {
-    const res = await client.analysis.evaluate({
+    const res = await lichess.analysis.evaluate({
       fen: 'rnbqkbnr/ppp1pppp/8/3pP3/8/8/PPPP1PPP/RNBQKBNR',
     })
     const data = await res.json()
@@ -12,7 +12,7 @@ describe('analysis.evaluate()', () => {
 
 describe('message.send()', () => {
   it('should send a message to a user', async () => {
-    const res = await client.message.send({
+    const res = await lichess.message.send({
       username: 'devjiwonchoi',
       text: 'Hello, world!',
     })
@@ -23,7 +23,7 @@ describe('message.send()', () => {
 
 describe('simuls.info()', () => {
   it('should return simul info', async () => {
-    const res = await client.simuls.info()
+    const res = await lichess.simuls.info()
     const data = await res.json()
     expect(data).toHaveProperty('pending')
   })
@@ -31,7 +31,7 @@ describe('simuls.info()', () => {
 
 describe('tv.channels()', () => {
   it('should get current tv channels', async () => {
-    const res = await client.tv.channels()
+    const res = await lichess.tv.channels()
     const data = await res.json()
     expect(data).toHaveProperty('bot')
   })
@@ -40,7 +40,7 @@ describe('tv.channels()', () => {
 // TODO: Figure out stream testing
 // describe('tv.stream()', () => {
 //   it('should stream tv channels', async () => {
-//     const res = await client.tv.stream()
+//     const res = await lichess.tv.stream()
 //     const data = await res.json()
 //     expect(data.d).toHaveProperty('id')
 //   })
@@ -49,7 +49,7 @@ describe('tv.channels()', () => {
 // TODO: Fix ongoing test - currently GET lets download as a file on browser
 // describe('tv.ongoing()', () => {
 //   it('should get ongoing tv games on channel', async () => {
-//     const res = await client.tv.ongoing({
+//     const res = await lichess.tv.ongoing({
 //       channel: 'bot',
 //     })
 //     const data = await res.json()

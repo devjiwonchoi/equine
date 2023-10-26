@@ -1,1 +1,1 @@
-export { Equine } from './client'
+export { Equine } from './lichess'

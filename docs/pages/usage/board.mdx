@@ -5,69 +5,69 @@
 ### Stream incoming events
 
 ```ts
-client.board.events()
+lichess.board.events()
 ```
 
 ### Stream Board game state
 
 ```ts
-client.board.stream(gameId: string)
+lichess.board.stream({ gameId: string })
 ```
 
 ### Make a Board move
 
 ```ts
-client.board.move({ gameId: string, move: string })
+lichess.board.move({ gameId: string, move: string })
 ```
 
 ### Write in the chat
 
 ```ts
-client.board.chat({
-  gameId: string,
-  room: 'player' | 'spectator',
-  text: string,
+lichess.board.chat({
+  gameId: string
+  room?: 'player' | 'spectator'
+  text?: string
 })
 ```
 
 ### Fetch the game chat
 
 ```ts
-client.board.chat.fetch({ gameId: string })
+lichess.board.chat.fetch({ gameId: string })
 ```
 
 ### Abort a game
 
 ```ts
-client.board.abort(gameId: string)
+lichess.board.abort({ gameId: string })
 ```
 
 ### Resign a game
 
 ```ts
-client.board.resign(gameId: string)
+lichess.board.resign({ gameId: string })
 ```
 
 ### Handle draw offers
 
 ```ts
-client.board.draw({ gameId: string, accept: boolean })
+lichess.board.draw({ gameId: string, accept: boolean })
 ```
 
 ### Handle takeback offers
 
 ```ts
-client.board.takeback({ gameId: string, accept: boolean })
+lichess.board.takeback({ gameId: string, accept: boolean })
 ```
 
 ### Claim victory of a game
 
 ```ts
-client.board.victory(gameId: string)
+lichess.board.victory({ gameId: string })
 ```
 
 ### Berserk a tournament game
 
 ```ts
-client.board.BERSERK(gameId: string)
+lichess.board.berserk({ gameId: string })
 ```

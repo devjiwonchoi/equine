@@ -1,17 +1,17 @@
-import { client } from './test-utils'
+import { lichess } from './test-utils'
 
 describe('Challenge', () => {
   it('should create and cancel a challenge', async () => {
-    const create = await client.challenge.create({ username: 'LeelaChess' })
+    const create = await lichess.challenge.create({ username: 'LeelaChess' })
     expect(create.challenge).toHaveProperty('id')
 
-    const cancel = await client.challenge.cancel({
+    const cancel = await lichess.challenge.cancel({
       challengeId: create.challenge.id,
     })
     expect(cancel.ok).toBe(true)
   })
   it('should create an AI challenge', async () => {
-    const ai = await client.challenge.ai({
+    const ai = await lichess.challenge.ai({
       level: 1,
       days: 1,
       color: 'random',
@@ -20,7 +20,7 @@ describe('Challenge', () => {
     expect(ai).toHaveProperty('id')
   })
   it('should create an open challenge', async () => {
-    const open = await client.challenge.open({
+    const open = await lichess.challenge.open({
       rated: true,
       clockLimit: 10 * 60,
       clockIncrement: 0,

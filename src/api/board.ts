@@ -49,7 +49,7 @@ export class Board {
   //   return undefined
   // }
 
-  public stream(gameId: string) {
+  public stream({ gameId }: { gameId: string }) {
     return this.fetcher(`/board/game/stream/${gameId}`)
   }
 

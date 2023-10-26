@@ -14,15 +14,17 @@
 
 ## Basic Usage
 
+```bash
+npm i equine
+```
+
 ```ts
-// CJS
-const { Client } = require('equine')
-// ESM
-import { Client } from 'equine'
+import { Equine } from 'equine'
 
-const client = new Client()
+const lichess = new Equine('LICHESS_API_TOKEN')
 
-await client.// ...
+// Returns the info of the account who owns the token
+const accountInfo = await lichess.account.info()
 ```
 
 ## Documentation

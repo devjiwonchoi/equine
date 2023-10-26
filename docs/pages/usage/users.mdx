@@ -9,25 +9,29 @@ Equine supports the `Users` API as `users` and `user`.
 ### Get users by IDs
 
 ```ts
-client.users.info({ ids: string | string[] })
+lichess.users.info({ ids: string | string[] })
+
+// ids: 'alpha' | 'alpha,bravo' | 'alpha, bravo' | ['alpha', 'bravo']
 ```
 
 ### Get real-time users status
 
 ```ts
-client.users.status({ ids: string | string[] })
+lichess.users.status({ ids: string | string[] })
+
+// ids: 'alpha' | 'alpha,bravo' | 'alpha, bravo' | ['alpha', 'bravo']
 ```
 
 ### Get crosstable
 
 ```ts
-client.users.crosstable({ user1: string, user2: string, matchup: boolean })
+lichess.users.crosstable({ user1: string; user2: string; matchup?: boolean })
 ```
 
 ### Get live streamers
 
 ```ts
-client.users.streaming()
+lichess.users.streaming()
 ```
 
 ## `user`
@@ -35,44 +39,43 @@ client.users.streaming()
 ### Get user public data
 
 ```ts
-client.user.info(username: string)
+lichess.user.info({ username: string })
 ```
 
 ### Get rating history of a user
 
 ```ts
-client.user.history(username: string)
+lichess.user.history({ username: string })
 ```
 
 ### Get performance statistics of a user
 
 ```ts
-client.user.performance({ username: string, perfType: string })
+lichess.user.performance({ username: string, perfType: string })
 ```
 
 ### Get user activity
 
 ```ts
-client.user.activity(username: string)
+lichess.user.activity({ username: string })
 ```
 
 ### Autocomplete usernames
 
 ```ts
-// TODO: specify types
-client.user.autocomplete({ term, details, friendPrior })
+lichess.user.autocomplete({ term: string; details?: boolean; friendPrior?: boolean })
 ```
 
 ### Add a note for a user
 
 ```ts
-client.user.note({ username: string, text: string })
+lichess.user.note({ username: string, text: string })
 ```
 
 ### Get notes for a user
 
 ```ts
-client.user.notes({ username: string })
+lichess.user.note({ username: string })
 ```
 
 ### Follow a player
@@ -80,7 +83,7 @@ client.user.notes({ username: string })
 > This feature is under the [Relations](https://lichess.org/api#tag/Relations/operation/followUser) part.
 
 ```ts
-client.user.follow(username: string)
+lichess.user.follow({ username: string })
 ```
 
 ### Unfollow a player
@@ -88,5 +91,5 @@ client.user.follow(username: string)
 > This feature is under the [Relations](https://lichess.org/api#tag/Relations/operation/unfollowUser) part.
 
 ```ts
-client.user.unfollow(username: string)
+lichess.user.unfollow({ username: string })
 ```

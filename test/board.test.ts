@@ -1,9 +1,9 @@
-import { client } from './test-utils'
+import { lichess } from './test-utils'
 
 let gameId: string
 
 beforeAll(async () => {
-  const gameData = await client.challenge.ai({
+  const gameData = await lichess.challenge.ai({
     level: 1,
     color: 'white',
     variant: 'standard',
@@ -12,13 +12,13 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
-  await client.board.abort({ gameId })
+  await lichess.board.abort({ gameId })
 })
 
 // TODO: Figure out how to end stream
 // describe('board.events()', () => {
 //   it('should stream events', async () => {
-//     const res = await client.board.events()
+//     const res = await lichess.board.events()
 //     const data = await res.json()
 //     expect(data).toBeDefined()
 //   })
@@ -26,7 +26,7 @@ afterAll(async () => {
 
 // describe('board.stream()', () => {
 //   it('should stream game', async () => {
-//     const res = await client.board.stream(gameId)
+//     const res = await lichess.board.stream(gameId)
 //     const data = await res.json()
 //     expect(data).toBeDefined()
 //   })
@@ -34,18 +34,18 @@ afterAll(async () => {
 
 describe('board.move()', () => {
   it('should move', async () => {
-    const move = await client.board.move({ gameId, move: 'e2e4' })
+    const move = await lichess.board.move({ gameId, move: 'e2e4' })
     expect(move.ok).toBe(true)
   })
 })
 
 describe('board.chat()', () => {
   it('should get chat', async () => {
-    const chat = await client.board.chat({ gameId })
+    const chat = await lichess.board.chat({ gameId })
     expect(Array.isArray(chat)).toBe(true)
   })
   it('should chat', async () => {
-    const chat = await client.board.chat({
+    const chat = await lichess.board.chat({
       gameId,
       room: 'player',
       text: 'test',
@@ -56,14 +56,14 @@ describe('board.chat()', () => {
 
 describe('board.takeback()', () => {
   it('should takeback', async () => {
-    const takeback = await client.board.takeback({ gameId, accept: true })
+    const takeback = await lichess.board.takeback({ gameId, accept: true })
     expect(takeback.ok).toBe(true)
   })
 })
 
 describe('board.draw()', () => {
   it('should draw', async () => {
-    const draw = await client.board.draw({ gameId, accept: true })
+    const draw = await lichess.board.draw({ gameId, accept: true })
     expect(draw.ok).toBe(true)
   })
 })
@@ -72,44 +72,44 @@ describe('board.draw()', () => {
 
 describe('board.resign()', () => {
   it('should resign', async () => {
-    const newResignGame = await client.challenge.ai({
+    const newResignGame = await lichess.challenge.ai({
       level: 1,
       color: 'white',
       variant: 'standard',
     })
     const resignGameId = newResignGame.id
 
-    const resign = await client.board.resign({ gameId: resignGameId })
+    const resign = await lichess.board.resign({ gameId: resignGameId })
     expect(resign.ok).toBe(true)
-    await client.board.abort(resignGameId)
+    await lichess.board.abort(resignGameId)
   })
 })
 
 describe('board.victory()', () => {
   it('should victory', async () => {
-    const newVictoryGame = await client.challenge.ai({
+    const newVictoryGame = await lichess.challenge.ai({
       level: 1,
       color: 'white',
       variant: 'standard',
     })
     const victoryGameId = newVictoryGame.id
 
-    const victory = await client.board.victory({ gameId: victoryGameId })
+    const victory = await lichess.board.victory({ gameId: victoryGameId })
     expect(victory.ok).toBe(true)
-    await client.board.abort(victoryGameId)
+    await lichess.board.abort(victoryGameId)
   })
 })
 
 describe('board.abort()', () => {
   it('should abort', async () => {
-    const newAbortGame = await client.challenge.ai({
+    const newAbortGame = await lichess.challenge.ai({
       level: 1,
       color: 'white',
       variant: 'standard',
     })
     const abortGameId = newAbortGame.id
 
-    const abort = await client.board.abort({ gameId: abortGameId })
+    const abort = await lichess.board.abort({ gameId: abortGameId })
     expect(abort.ok).toBe(true)
   })
 })
