@@ -23,8 +23,8 @@ export class Equine {
   public users: Users
 
   constructor(private readonly token: string) {
-    this.fetcher = (endpoint: string, post?: boolean) =>
-      fetcher({ endpoint, token: this.token, post })
+    this.fetcher = (endpoint: string, post?: boolean, body?: URLSearchParams) =>
+      fetcher({ endpoint, token: this.token, post, body })
 
     this.account = new Account(this.fetcher)
     this.analysis = new Analysis(this.fetcher)

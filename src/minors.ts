@@ -1,5 +1,4 @@
-import { LichessHeaders, GameVariant } from './types'
-import { LICHESS_API_URL } from './constants'
+import { GameVariant } from './types'
 
 export class Analysis {
   constructor(private readonly fetcher: Function) {}
