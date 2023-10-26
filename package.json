@@ -1,7 +1,7 @@
 {
   "name": "equine",
-  "version": "0.1.0",
-  "description": "minimal lichess client for node",
+  "version": "0.2.0",
+  "description": "Minimal Lichess Client for Node",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
