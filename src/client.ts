@@ -1,6 +1,6 @@
 import { Account } from './api/account'
 import { Board } from './api/board'
-import { Bot } from './api/bot'
+// import { Bot } from './bot'
 import { Challenge } from './api/challenge'
 import { Users, User } from './api/users'
 // import { Analysis, Simuls, TV } from './minors'
@@ -12,7 +12,6 @@ export class Equine {
   // v1 API
   public account: Account
   public board: Board
-  public bot: Bot
   public challenge: Challenge
   public user: User
   public users: Users
@@ -23,6 +22,7 @@ export class Equine {
   // // public message: Message
   // public simuls: Simuls
   // public tv: TV
+  // public bot: Bot
 
   constructor(private readonly token: string) {
     this.fetcher = (endpoint: string, post?: boolean, body?: URLSearchParams) =>
@@ -31,7 +31,6 @@ export class Equine {
     // v1 API
     this.account = new Account(this.fetcher)
     this.board = new Board(this.fetcher)
-    this.bot = new Bot(this.fetcher)
     this.challenge = new Challenge(this.fetcher)
     this.user = new User(this.fetcher)
     this.users = new Users(this.fetcher)
@@ -42,5 +41,6 @@ export class Equine {
     // // this.message = new Message(this.fetcher)
     // this.simuls = new Simuls(this.fetcher)
     // this.tv = new TV(this.fetcher)
+    // this.bot = new Bot(this.fetcher)
   }
 }

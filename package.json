@@ -32,7 +32,8 @@
     "testTimeout": 10000,
     "verbose": true,
     "testPathIgnorePatterns": [
-      "/minors/"
+      "minors.test.ts",
+      "bot.test.ts"
     ]
   },
   "author": "Jiwon Choi",
