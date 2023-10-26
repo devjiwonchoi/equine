@@ -5,6 +5,9 @@ const config: DocsThemeConfig = {
   project: {
     link: 'https://github.com/devjiwonchoi/equine',
   },
+  useNextSeoProps() {
+    return { titleTemplate: '%s | Equine' }
+  },
 }
 
 export default config

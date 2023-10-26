@@ -5,31 +5,31 @@
 ### Get online bots
 
 ```ts
-client.bot.online(nb?: number)
+lichess.bot.online(nb?: number)
 ```
 
 ### Upgrade to Bot account
 
 ```ts
-client.bot.UPGRADE()
+lichess.bot.UPGRADE()
 ```
 
 ### Stream Bot game state
 
 ```ts
-client.bot.stream(gameId: string)
+lichess.bot.stream(gameId: string)
 ```
 
 ### Make a Bot move
 
 ```ts
-client.bot.move({ gameId: string, move: string })
+lichess.bot.move({ gameId: string, move: string })
 ```
 
 ### Write in the chat
 
 ```ts
-client.bot.chat({
+lichess.bot.chat({
   gameId: string,
   room: 'player' | 'spectator',
   text: string,
@@ -39,17 +39,17 @@ client.bot.chat({
 ### Fetch the game chat
 
 ```ts
-client.bot.chat.fetch({ gameId: string })
+lichess.bot.chat.fetch({ gameId: string })
 ```
 
 ### Abort a game
 
 ```ts
-client.bot.abort(gameId: string)
+lichess.bot.abort(gameId: string)
 ```
 
 ### Resign a game
 
 ```ts
-client.bot.resign(gameId: string)
+lichess.bot.resign(gameId: string)
 ```

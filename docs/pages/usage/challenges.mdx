@@ -5,32 +5,32 @@
 ### Create a challenge
 
 ```ts
-client.challenge.create(username: string)
+lichess.challenge.create(username: string)
 ```
 
 ### Accept a challenge
 
 ```ts
-client.challenge.accept(challengeId: string)
+lichess.challenge.accept(challengeId: string)
 ```
 
 ### Decline a challenge
 
 ```ts
-client.challenge.decline(challengeId: string)
+lichess.challenge.decline(challengeId: string)
 ```
 
 ### Cancel a challenge
 
 ```ts
-client.challenge.cancel(challengeId: string)
+lichess.challenge.cancel(challengeId: string)
 ```
 
 ### Challenge the AI
 
 ```ts
 // TODO: specify types
-client.challenge.ai({
+lichess.challenge.ai({
   level,
   clockLimit,
   clockIncrement,
@@ -45,7 +45,7 @@ client.challenge.ai({
 
 ```ts
 // TODO: specify types
-client.challenge.open({
+lichess.challenge.open({
   rated,
   clockLimit,
   clockIncrement,
@@ -63,17 +63,17 @@ client.challenge.open({
 ### Start clocks of a game
 
 ```ts
-client.challenge.start({ gameId: string, token1: string, token2: string })
+lichess.challenge.start({ gameId: string, token1: string, token2: string })
 ```
 
 ### Add time to the opponent clock
 
 ```ts
-client.challenge.grant({ gameId: string, seconds: number })
+lichess.challenge.grant({ gameId: string, seconds: number })
 ```
 
 ### Admin challenge tokens
 
 ```ts
-client.challenge.admin({ users: string | string[], description: string })
+lichess.challenge.admin({ users: string | string[], description: string })
 ```
