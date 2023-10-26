@@ -1,5 +1,4 @@
-import { LichessHeaders, GetUsers, GetUser } from './types'
-import { LICHESS_API_URL } from './constants'
+import { GetUsers, GetUser } from './types'
 
 class LeaderBoard {
   constructor(private readonly fetcher: Function) {}
