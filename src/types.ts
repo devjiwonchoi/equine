@@ -1,5 +1,3 @@
-export type LichessHeaders = { Authorization: string }
-
 export type GameVariant =
   | 'standard'
   | 'chess960'

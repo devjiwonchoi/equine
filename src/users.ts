@@ -1,46 +1,35 @@
-import { LichessHeaders, GetUsers, GetUser } from './types'
-import { LICHESS_API_URL } from './constants'
+import { GetUsers, GetUser } from './types'
 
 class LeaderBoard {
-  constructor(private readonly headers: LichessHeaders) {}
+  constructor(private readonly fetcher: Function) {}
 
   public info({ nb, perfType }: { nb: number; perfType: string }) {
-    return fetch(`${LICHESS_API_URL}/player/top/${nb}/${perfType}`, {
-      headers: this.headers,
-    })
+    return this.fetcher(`/player/top/${nb}/${perfType}`)
   }
 
   // TODO: define perfTypes
   public topTens() {
-    return fetch(`${LICHESS_API_URL}/player`, {
-      headers: this.headers,
-    })
+    return this.fetcher(`/player`)
   }
 }
 
 export class Users {
   public leaderboard: LeaderBoard
 
-  constructor(private readonly headers: LichessHeaders) {
-    this.leaderboard = new LeaderBoard(this.headers)
+  constructor(private readonly fetcher: Function) {
+    this.leaderboard = new LeaderBoard(this.fetcher)
   }
 
   public info({ ids }: GetUsers) {
     if (Array.isArray(ids)) ids = ids.join(',')
     ids = ids.replace(/\s/g, '')
-    return fetch(`${LICHESS_API_URL}/users`, {
-      headers: this.headers,
-      method: 'POST',
-      body: ids,
-    })
+    return this.fetcher(`/users`, true, ids)
   }
 
   public status({ ids }: GetUsers) {
     if (Array.isArray(ids)) ids = ids.join(',')
     ids = ids.replace(/\s/g, '')
-    return fetch(`${LICHESS_API_URL}/users/status?ids=${ids}`, {
-      headers: this.headers,
-    })
+    return this.fetcher(`/users/status?ids=${ids}`)
   }
 
   public crosstable({
@@ -52,77 +41,59 @@ export class Users {
     user2: string
     matchup?: boolean
   }) {
-    return fetch(
-      `${LICHESS_API_URL}/crosstable/${user1}/${user2}?matchup=${matchup}`,
-      {
-        headers: this.headers,
-      }
-    )
+    return this.fetcher(`/crosstable/${user1}/${user2}?matchup=${matchup}`)
   }
 
   public streaming() {
-    return fetch(`${LICHESS_API_URL}/streamer/live`, {
-      headers: this.headers,
-    })
+    return this.fetcher(`/streamer/live`)
   }
 }
 
 export class User {
-  constructor(private readonly headers: LichessHeaders) {}
+  constructor(private readonly fetcher: Function) {}
 
-  public info(username: string) {
-    return fetch(`${LICHESS_API_URL}/user/${username}`, {
-      headers: this.headers,
-    })
+  public info({ username }: { username: string }) {
+    return this.fetcher(`/user/${username}`)
   }
 
-  public history(username: string) {
-    return fetch(`${LICHESS_API_URL}/user/${username}/rating-history`, {
-      headers: this.headers,
-    })
+  public history({ username }: { username: string }) {
+    return this.fetcher(`/user/${username}/rating-history`)
   }
 
-  public performance({ username, perfType }: GetUser) {
-    return fetch(`${LICHESS_API_URL}/user/${username}/perf/${perfType}`, {
-      headers: this.headers,
-    })
+  public performance({
+    username,
+    perfType,
+  }: {
+    username: string
+    perfType: string
+  }) {
+    return this.fetcher(`/user/${username}/perf/${perfType}`)
   }
 
-  public activity(username: string) {
-    return fetch(`${LICHESS_API_URL}/user/${username}/activity`, {
-      headers: this.headers,
-    })
+  public activity({ username }: { username: string }) {
+    return this.fetcher(`/user/${username}/activity`)
   }
 
   public autocomplete({ term, details = false, friendPrior = false }: GetUser) {
-    return fetch(
-      `${LICHESS_API_URL}/player/autocomplete?term=${term}&object=${details}&friend=${friendPrior}`,
-      {
-        headers: this.headers,
-      }
+    return this.fetcher(
+      `/player/autocomplete?term=${term}&object=${details}&friend=${friendPrior}`
     )
   }
 
-  public note({ username, text }: GetUser) {
+  public note({ username, text }: { username: string; text: string }) {
     const hasText = typeof text === 'string' && text.length > 0
-    return fetch(`${LICHESS_API_URL}/user/${username}/note`, {
-      headers: this.headers,
-      method: hasText ? 'POST' : 'GET',
-      body: hasText ? new URLSearchParams({ text }) : undefined,
-    })
+    return this.fetcher(
+      `/user/${username}/note`,
+      hasText,
+      hasText ? new URLSearchParams({ text }) : undefined
+    )
   }
 
-  public follow(username: string) {
-    return fetch(`${LICHESS_API_URL}/rel/follow/${username}`, {
-      method: 'POST',
-      headers: this.headers,
-    })
+  public follow({ username }: { username: string }) {
+    return this.fetcher(`/rel/follow/${username}`, true)
   }
 
-  public unfollow(username: string) {
-    return fetch(`${LICHESS_API_URL}/rel/unfollow/${username}`, {
-      method: 'POST',
-      headers: this.headers,
-    })
+  public unfollow({ username }: { username: string }) {
+    return this.fetcher(`/rel/unfollow/${username}`, true)
   }
 }
