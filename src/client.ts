@@ -34,7 +34,7 @@ export class Equine {
 
     this.account = new Account(this.fetcher)
     this.analysis = new Analysis(this.headers)
-    this.board = new Board(this.headers)
+    this.board = new Board(this.fetcher)
     this.bot = new Bot(this.headers)
     this.challenge = new Challenge(this.headers)
     this.message = new Message(this.headers)
