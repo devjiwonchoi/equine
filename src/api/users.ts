@@ -1,4 +1,4 @@
-import { GetUsers, GetUser } from './types'
+import { GetUsers, GetUser } from '../types'
 
 class LeaderBoard {
   constructor(private readonly fetcher: Function) {}
@@ -80,7 +80,7 @@ export class User {
     )
   }
 
-  public note({ username, text }: { username: string; text: string }) {
+  public note({ username, text }: { username: string; text?: string }) {
     const hasText = typeof text === 'string' && text.length > 0
     return this.fetcher(
       `/user/${username}/note`,

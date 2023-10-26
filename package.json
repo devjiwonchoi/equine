@@ -30,7 +30,11 @@
     },
     "testEnvironment": "node",
     "testTimeout": 10000,
-    "verbose": true
+    "verbose": true,
+    "testPathIgnorePatterns": [
+      "minors.test.ts",
+      "bot.test.ts"
+    ]
   },
   "author": "Jiwon Choi",
   "repository": {

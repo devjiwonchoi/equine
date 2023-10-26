@@ -3,17 +3,16 @@ import { client } from './test-utils'
 let gameId: string
 
 beforeAll(async () => {
-  const initAIGame = await client.challenge.ai({
+  const gameData = await client.challenge.ai({
     level: 1,
     color: 'white',
     variant: 'standard',
   })
-  const gameData = await initAIGame.json()
   gameId = gameData.id
 })
 
 afterAll(async () => {
-  await client.board.abort(gameId)
+  await client.board.abort({ gameId })
 })
 
 // TODO: Figure out how to end stream
@@ -78,12 +77,10 @@ describe('board.resign()', () => {
       color: 'white',
       variant: 'standard',
     })
-    const resignGameData = await newResignGame.json()
-    const resignGameId = resignGameData.id
+    const resignGameId = newResignGame.id
 
-    const res = await client.board.resign(resignGameId)
-    const data = await res.json()
-    expect(data.ok).toBe(true)
+    const resign = await client.board.resign({ gameId: resignGameId })
+    expect(resign.ok).toBe(true)
     await client.board.abort(resignGameId)
   })
 })
@@ -95,10 +92,9 @@ describe('board.victory()', () => {
       color: 'white',
       variant: 'standard',
     })
-    const victoryGameData = await newVictoryGame.json()
-    const victoryGameId = victoryGameData.id
+    const victoryGameId = newVictoryGame.id
 
-    const victory = await client.board.victory(victoryGameId)
+    const victory = await client.board.victory({ gameId: victoryGameId })
     expect(victory.ok).toBe(true)
     await client.board.abort(victoryGameId)
   })
@@ -111,11 +107,9 @@ describe('board.abort()', () => {
       color: 'white',
       variant: 'standard',
     })
-    const abortGameData = await newAbortGame.json()
-    const abortGameId = abortGameData.id
+    const abortGameId = newAbortGame.id
 
-    const res = await client.board.abort(abortGameId)
-    const data = await res.json()
-    expect(data.ok).toBe(true)
+    const abort = await client.board.abort({ gameId: abortGameId })
+    expect(abort.ok).toBe(true)
   })
 })
