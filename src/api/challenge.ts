@@ -1,3 +1,4 @@
+import type { ChallengeAI, ChallengeOpen } from '../types'
 export class Challenge {
   constructor(private readonly fetcher: Function) {}
 
@@ -18,68 +19,60 @@ export class Challenge {
   }
 
   // TODO: refactor
-  // public ai({
-  //   level,
-  //   clockLimit,
-  //   clockIncrement,
-  //   days,
-  //   color,
-  //   variant,
-  //   fen,
-  // }: ChallengeAI) {
-  //   const params = new URLSearchParams()
-  //   if (level) params.append('level', level.toString())
-  //   if (clockLimit) params.append('clock.limit', clockLimit.toString())
-  //   if (clockIncrement)
-  //     params.append('clock.increment', clockIncrement.toString())
-  //   if (days) params.append('days', days.toString())
-  //   if (color) params.append('color', color)
-  //   if (variant) params.append('variant', variant)
-  //   if (fen) params.append('fen', fen)
-  //   return fetch(`${LICHESS_API_URL}/challenge/ai`, {
-  //     headers: this.headers,
-  //     method: 'POST',
-  //     body: params,
-  //   })
-  // }
+  public ai({
+    level,
+    clockLimit,
+    clockIncrement,
+    days,
+    color,
+    variant,
+    fen,
+  }: ChallengeAI) {
+    const params = new URLSearchParams()
+    if (level) params.append('level', level.toString())
+    if (clockLimit) params.append('clock.limit', clockLimit.toString())
+    if (clockIncrement)
+      params.append('clock.increment', clockIncrement.toString())
+    if (days) params.append('days', days.toString())
+    if (color) params.append('color', color)
+    if (variant) params.append('variant', variant)
+    if (fen) params.append('fen', fen)
+    return this.fetcher(`/challenge/ai`, true, params)
+  }
 
-  // // TODO: refactor
-  // public open({
-  //   rated,
-  //   clockLimit,
-  //   clockIncrement,
-  //   days,
-  //   color,
-  //   variant,
-  //   fen,
-  //   name,
-  //   rules,
-  //   users,
-  //   expiresAt,
-  // }: ChallengeOpen) {
-  //   const params = new URLSearchParams()
-  //   if (rated) params.append('rated', rated.toString())
-  //   if (clockLimit) params.append('clock.limit', clockLimit.toString())
-  //   if (clockIncrement !== undefined)
-  //     params.append('clock.increment', clockIncrement.toString())
-  //   if (days) params.append('days', days.toString())
-  //   if (color) params.append('color', color)
-  //   if (variant) params.append('variant', variant)
-  //   if (fen) params.append('fen', fen)
-  //   if (name) params.append('name', name)
-  //   if (rules) params.append('rules', rules)
-  //   if (users) {
-  //     if (Array.isArray(users)) users = users.join(',')
-  //     users = users.replace(/\s/g, '')
-  //     params.append('users', users.toString())
-  //   }
-  //   if (expiresAt) params.append('expiresAt', expiresAt.toString())
-  //   return fetch(`${LICHESS_API_URL}/challenge/open`, {
-  //     headers: this.headers,
-  //     method: 'POST',
-  //     body: params,
-  //   })
-  // }
+  // TODO: refactor
+  public open({
+    rated,
+    clockLimit,
+    clockIncrement,
+    days,
+    color,
+    variant,
+    fen,
+    name,
+    rules,
+    users,
+    expiresAt,
+  }: ChallengeOpen) {
+    const params = new URLSearchParams()
+    if (rated) params.append('rated', rated.toString())
+    if (clockLimit) params.append('clock.limit', clockLimit.toString())
+    if (clockIncrement !== undefined)
+      params.append('clock.increment', clockIncrement.toString())
+    if (days) params.append('days', days.toString())
+    if (color) params.append('color', color)
+    if (variant) params.append('variant', variant)
+    if (fen) params.append('fen', fen)
+    if (name) params.append('name', name)
+    if (rules) params.append('rules', rules)
+    if (users) {
+      if (Array.isArray(users)) users = users.join(',')
+      users = users.replace(/\s/g, '')
+      params.append('users', users.toString())
+    }
+    if (expiresAt) params.append('expiresAt', expiresAt.toString())
+    return this.fetcher(`/challenge/open`, true, params)
+  }
 
   public start({
     gameId,
