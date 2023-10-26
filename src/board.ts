@@ -78,11 +78,11 @@ export class Board {
     )
   }
 
-  public abort(gameId: string) {
+  public abort({ gameId }: { gameId: string }) {
     return this.fetcher(`/board/game/${gameId}/abort`, true)
   }
 
-  public resign(gameId: string) {
+  public resign({ gameId }: { gameId: string }) {
     return this.fetcher(`/board/game/${gameId}/resign`, true)
   }
 
@@ -94,11 +94,11 @@ export class Board {
     return this.fetcher(`/board/game/${gameId}/takeback/${accept}`, true)
   }
 
-  public victory(gameId: string) {
+  public victory({ gameId }: { gameId: string }) {
     return this.fetcher(`/board/game/${gameId}/claim-victory`, true)
   }
 
-  public berserk(gameId: string) {
+  public berserk({ gameId }: { gameId: string }) {
     return this.fetcher(`/board/game/${gameId}/berserk`, true)
   }
 }

@@ -13,7 +13,7 @@ export class Challenge {
     return this.fetcher(`/challenge/${challengeId}/decline`, true)
   }
 
-  public cancel(challengeId: string) {
+  public cancel({ challengeId }: { challengeId: string }) {
     return this.fetcher(`/challenge/${challengeId}/cancel`, true)
   }
 
