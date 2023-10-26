@@ -5,7 +5,6 @@ import { Challenge } from './challenge'
 import { Users, User } from './users'
 import { Analysis, Simuls, TV } from './minors'
 import { fetcher } from './utils'
-import { LichessHeaders } from './types'
 
 export class Equine {
   private fetcher: Function
