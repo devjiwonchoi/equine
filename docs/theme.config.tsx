@@ -21,6 +21,17 @@ const config: DocsThemeConfig = {
       />
     </>
   ),
+  footer: {
+    text: (
+      <span>
+        MIT {new Date().getFullYear()} ©{' '}
+        <a href="https://equine.vercel.app" target="_blank">
+          Equine
+        </a>
+        .
+      </span>
+    ),
+  },
   project: {
     link: 'https://github.com/devjiwonchoi/equine',
   },
