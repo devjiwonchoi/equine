@@ -18,8 +18,8 @@ devDependencies:
     specifier: ^20.8.7
     version: 20.8.7
   '@types/node-fetch':
-    specifier: 2.6.4
-    version: 2.6.4
+    specifier: 2.6.8
+    version: 2.6.8
   bunchee:
     specifier: ^3.9.0
     version: 3.9.0(typescript@5.2.2)
@@ -1101,11 +1101,11 @@ packages:
       pretty-format: 29.7.0
     dev: true
 
-  /@types/node-fetch@2.6.4:
-    resolution: {integrity: sha512-1ZX9fcN4Rvkvgv4E6PAY5WXUFWFcRWxZa3EW83UjycOB9ljJCedb2CupIP4RZMEwF/M3eTcCihbBRgwtGbg5Rg==}
+  /@types/node-fetch@2.6.8:
+    resolution: {integrity: sha512-nnH5lV9QCMPsbEVdTb5Y+F3GQxLSw1xQgIydrb2gSfEavRPs50FnMr+KUaa+LoPSqibm2N+ZZxH7lavZlAT4GA==}
     dependencies:
       '@types/node': 20.8.7
-      form-data: 3.0.1
+      form-data: 4.0.0
     dev: true
 
   /@types/node@20.8.7:
@@ -1646,8 +1646,8 @@ packages:
       path-exists: 4.0.0
     dev: true
 
-  /form-data@3.0.1:
-    resolution: {integrity: sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==}
+  /form-data@4.0.0:
+    resolution: {integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==}
     engines: {node: '>= 6'}
     dependencies:
       asynckit: 0.4.0
