@@ -2,7 +2,9 @@ import { lichess } from './test-utils'
 
 describe('Challenge', () => {
   it('should create and cancel a challenge', async () => {
-    const create = await lichess.challenge.create({ username: 'LeelaChess' })
+    const create = await lichess.challenge.create({
+      username: 'LeelaChessOfficial',
+    })
     expect(create.challenge).toHaveProperty('id')
 
     const cancel = await lichess.challenge.cancel({
@@ -18,6 +20,8 @@ describe('Challenge', () => {
       variant: 'standard',
     })
     expect(ai).toHaveProperty('id')
+
+    await lichess.challenge.cancel({ challengeId: ai.id })
   })
   it('should create an open challenge', async () => {
     const open = await lichess.challenge.open({
@@ -28,5 +32,7 @@ describe('Challenge', () => {
       variant: 'standard',
     })
     expect(open.challenge).toHaveProperty('id')
+
+    await lichess.challenge.cancel({ challengeId: open.challenge.id })
   })
 })

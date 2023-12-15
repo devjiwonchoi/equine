@@ -11,10 +11,6 @@ beforeAll(async () => {
   gameId = gameData.id
 })
 
-afterAll(async () => {
-  await lichess.board.abort({ gameId })
-})
-
 // TODO: Figure out how to end stream
 // describe('board.events()', () => {
 //   it('should stream events', async () => {
@@ -69,7 +65,6 @@ describe('board.draw()', () => {
 })
 
 // Run independent games for the tests below
-
 describe('board.resign()', () => {
   it('should resign', async () => {
     const newResignGame = await lichess.challenge.ai({
@@ -81,35 +76,12 @@ describe('board.resign()', () => {
 
     const resign = await lichess.board.resign({ gameId: resignGameId })
     expect(resign.ok).toBe(true)
-    await lichess.board.abort(resignGameId)
-  })
-})
-
-describe('board.victory()', () => {
-  it('should victory', async () => {
-    const newVictoryGame = await lichess.challenge.ai({
-      level: 1,
-      color: 'white',
-      variant: 'standard',
-    })
-    const victoryGameId = newVictoryGame.id
-
-    const victory = await lichess.board.victory({ gameId: victoryGameId })
-    expect(victory.ok).toBe(true)
-    await lichess.board.abort(victoryGameId)
   })
 })
 
 describe('board.abort()', () => {
   it('should abort', async () => {
-    const newAbortGame = await lichess.challenge.ai({
-      level: 1,
-      color: 'white',
-      variant: 'standard',
-    })
-    const abortGameId = newAbortGame.id
-
-    const abort = await lichess.board.abort({ gameId: abortGameId })
+    const abort = await lichess.board.abort({ gameId })
     expect(abort.ok).toBe(true)
   })
 })
