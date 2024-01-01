@@ -3,9 +3,10 @@
   "version": "0.2.0",
   "description": "Minimal Lichess API Client for Node.js",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
   "scripts": {
     "build": "bunchee",
-    "dev": "cd ./docs && pnpm dev",
     "test": "NODE_ENV=test dotenv -e .env jest"
   },
   "devDependencies": {
@@ -31,10 +32,11 @@
     ]
   },
   "author": "Jiwon Choi",
-  "repository": "https://github.com/devjiwonchoi/equine.git",
-  "license": "MIT",
+  "repository": "devjiwonchoi/equine",
+  "bugs": "https://github.com/devjiwonchoi/equine/issues",
+  "homepage": "https://equine.vercel.app",
   "files": [
-    "dist/*"
+    "dist"
   ],
   "keywords": [
     "chess",
@@ -42,5 +44,9 @@
     "api",
     "client",
     "node"
-  ]
+  ],
+  "engines": {
+    "node": ">=18.17.0",
+    "pnpm": "8.9.0"
+  }
 }
