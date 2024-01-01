@@ -12,7 +12,8 @@
     "incremental": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "skipLibCheck": true
   },
   "include": [
     "next-env.d.ts",

@@ -1,17 +1,12 @@
 {
   "name": "equine",
   "version": "0.2.0",
-  "description": "Minimal Lichess Client for Node",
+  "description": "Minimal Lichess Client for Node.js",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist/*"
-  ],
   "scripts": {
     "build": "bunchee",
-    "clean": "rm -rf dist",
     "dev": "cd ./docs && pnpm dev",
-    "test": "dotenv -e .env jest"
+    "test": "NODE_ENV=test dotenv -e .env jest"
   },
   "devDependencies": {
     "@swc/core": "^1.3.99",
@@ -36,20 +31,16 @@
     ]
   },
   "author": "Jiwon Choi",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/devjiwonchoi/equine.git"
-  },
+  "repository": "https://github.com/devjiwonchoi/equine.git",
   "license": "MIT",
+  "files": [
+    "dist/*"
+  ],
   "keywords": [
     "chess",
     "lichess",
     "api",
     "client",
     "node"
-  ],
-  "engines": {
-    "node": ">= 18"
-  },
-  "funding": "https://github.com/sponsors/devjiwonchoi"
+  ]
 }

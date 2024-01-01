@@ -61,9 +61,9 @@ describe('ongoing()', () => {
   })
 })
 
-describe('following()', () => {
-  it('should get following users', async () => {
-    const following = await lichess.account.following()
-    expect(following).toHaveProperty('id')
-  })
-})
+// describe('following()', () => {
+//   it('should get following users', async () => {
+//     const following = await lichess.account.following()
+//     expect(following.id).toBe('following')
+//   })
+// })

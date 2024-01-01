@@ -25,7 +25,8 @@ export class Account {
     return this.fetcher(`/account/playing?nb=${limit}`)
   }
 
-  public following() {
-    return this.fetcher(`/rel/following`)
-  }
+  // TODO: NDJSON
+  // public following() {
+  //   return this.fetcher(`/rel/following`)
+  // }
 }
