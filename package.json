@@ -2,6 +2,7 @@
   "name": "equine",
   "version": "0.2.0",
   "description": "Minimal Lichess Client for Node.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "bunchee",
     "dev": "cd ./docs && pnpm dev",
@@ -16,12 +17,6 @@
     "dotenv-cli": "^7.3.0",
     "jest": "^29.7.0",
     "typescript": "^5.3.2"
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    }
   },
   "jest": {
     "transform": {
