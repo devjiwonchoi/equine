@@ -6,3 +6,4 @@
 - [Building](./contributing/building.md)
 - [Testing](./contributing/testing.md)
 - [Adding a new feature](./contributing/adding-new-feature.md)
+- [Documentation](./contributing/docs.md)
