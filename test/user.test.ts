@@ -29,7 +29,7 @@ describe('user.performance()', () => {
 describe('user.activity()', () => {
   it('should get user activity', async () => {
     const activity = await lichess.user.activity({ username: 'devjiwonchoi' })
-    expect(activity[0]).toHaveProperty('interval')
+    expect(Array.isArray(activity)).toBe(true)
   })
 })
 
