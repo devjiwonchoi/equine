@@ -16,7 +16,7 @@
     "bunchee": "^4.2.11",
     "dotenv-cli": "^7.3.0",
     "jest": "^29.7.0",
-    "typescript": "^5.3.2"
+    "typescript": "^5.3.3"
   },
   "jest": {
     "transform": {
