@@ -64,6 +64,13 @@ describe('board.draw()', () => {
   })
 })
 
+describe('board.abort()', () => {
+  it('should abort', async () => {
+    const abort = await lichess.board.abort({ gameId })
+    expect(abort.ok).toBe(true)
+  })
+})
+
 // Run independent games for the tests below
 describe('board.resign()', () => {
   it('should resign', async () => {
@@ -79,9 +86,3 @@ describe('board.resign()', () => {
   })
 })
 
-describe('board.abort()', () => {
-  it('should abort', async () => {
-    const abort = await lichess.board.abort({ gameId })
-    expect(abort.ok).toBe(true)
-  })
-})
