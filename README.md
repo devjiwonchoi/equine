@@ -1,6 +1,6 @@
 # equine 🐴
 
-> minimal lichess client for node
+> Minimal Lichess API Client for Node.js
 
 <p align="left">
   <a href="https://npm.im/equine">
@@ -12,21 +12,14 @@
   </a>
 </p>
 
-## Basic Usage
-
-```bash
-npm i equine
-```
-
-```ts
-import { Equine } from 'equine'
-
-const lichess = new Equine('LICHESS_API_TOKEN')
-
-// Returns the info of the account who owns the token
-const accountInfo = await lichess.account.info()
-```
-
 ## Documentation
 
-See [Equine Docs](https://equine.vercel.app) for more information.
+Visit [https://equine.vercel.app](https://equine.vercel.app) to view the full documentation.
+
+## Contributing
+
+Please see our [contributing.md](./contributing.md).
+
+### Good First Issues
+
+We have a list of [good first issues](https://github.com/devjiwonchoi/equine/labels/good%20first%20issue) that contain bugs that have a relatively limited scope. This is a great place to get started, gain experience, and get familiar with our contribution process.

@@ -1,7 +1,7 @@
 {
   "name": "equine",
   "version": "0.2.0",
-  "description": "Minimal Lichess Client for Node.js",
+  "description": "Minimal Lichess API Client for Node.js",
   "main": "dist/index.js",
   "scripts": {
     "build": "bunchee",
