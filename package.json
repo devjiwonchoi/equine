@@ -6,8 +6,8 @@
   "types": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "bunchee",
-    "test": "NODE_ENV=test dotenv -e .env jest"
+    "build": "npx bunchee",
+    "test": "NODE_ENV=test dotenv -e .env jest --silent=false"
   },
   "devDependencies": {
     "@swc/core": "^1.3.102",
@@ -47,6 +47,6 @@
   ],
   "engines": {
     "node": ">=18.17.0",
-    "pnpm": "8.9.0"
+    "pnpm": ">=8.9.0"
   }
 }
