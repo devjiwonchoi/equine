@@ -3,12 +3,12 @@ import { LICHESS_API_URL } from './constants'
 export async function fetcher({
   endpoint,
   token,
-  post,
+  method,
   body,
 }: {
   endpoint: string
   token: string
-  post?: boolean
+  method?: string
   body?: URLSearchParams
 }) {
   return (
@@ -16,7 +16,7 @@ export async function fetcher({
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      method: post ? 'POST' : 'GET',
+      method,
       body,
     })
   ).json()
