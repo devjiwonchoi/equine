@@ -3,6 +3,7 @@ import { Board } from './api/board'
 // import { Bot } from './bot'
 import { Challenge } from './api/challenge'
 import { Users, User } from './api/users'
+import { Study } from './api/study'
 // import { Analysis, Simuls, TV } from './minors'
 import { fetcher } from './utils'
 
@@ -15,6 +16,7 @@ export class Equine {
   public challenge: Challenge
   public user: User
   public users: Users
+  public study: Study
 
   // ...v2 API
   // public analysis: Analysis
@@ -25,8 +27,8 @@ export class Equine {
   // public bot: Bot
 
   constructor(private readonly token: string) {
-    this.fetcher = (endpoint: string, post?: boolean, body?: URLSearchParams) =>
-      fetcher({ endpoint, token: this.token, post, body })
+    this.fetcher = (endpoint: string, method?: string, body?: URLSearchParams) =>
+      fetcher({ endpoint, token: this.token, method, body })
 
     // v1 API
     this.account = new Account(this.fetcher)
@@ -34,6 +36,7 @@ export class Equine {
     this.challenge = new Challenge(this.fetcher)
     this.user = new User(this.fetcher)
     this.users = new Users(this.fetcher)
+    this.study = new Study(this.fetcher)
 
     // ...v2 API
     // this.analysis = new Analysis(this.fetcher)
