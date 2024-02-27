@@ -3,7 +3,7 @@ import { LICHESS_API_URL } from './constants'
 export async function fetcher({
   endpoint,
   token,
-  method,
+  method = 'get',
   body,
 }: {
   endpoint: string
