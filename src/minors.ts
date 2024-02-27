@@ -53,7 +53,7 @@ export class TV {
     opening?: boolean
   }) {
     return this.fetcher(
-      `/tv/${channel}?nb=${nb}&moves=${moves}&pgnInJson=${pgnInJson}&tags=${tags}&clocks=${clocks}&opening=${opening}`
+      `/tv/${channel}?nb=${nb}&moves=${moves}&pgnInJson=${pgnInJson}&tags=${tags}&clocks=${clocks}&opening=${opening}`,
     )
   }
 }

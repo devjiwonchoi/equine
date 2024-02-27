@@ -8,7 +8,7 @@
   </a>
 
   <a href="https://github.com/devjiwonchoi/equine/actions?workflow=CI">
-    <img src="https://github.com/devjiwonchoi/equine/actions/workflows/node_ci.yml/badge.svg">
+    <img src="https://github.com/devjiwonchoi/equine/actions/workflows/build_and_test.yml/badge.svg">
   </a>
 </p>
 

@@ -57,7 +57,7 @@ export class Board {
     const offerDraw = move === 'draw'
     return this.fetcher(
       `/board/game/${gameId}/move/${move}?offeringDraw=${offerDraw}`,
-      'post'
+      'post',
     )
   }
 
@@ -74,7 +74,7 @@ export class Board {
     return this.fetcher(
       `/board/game/${gameId}/chat`,
       isSendingChat ? 'post' : 'get',
-      isSendingChat ? new URLSearchParams({ room, text }) : undefined
+      isSendingChat ? new URLSearchParams({ room, text }) : undefined,
     )
   }
 

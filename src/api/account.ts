@@ -14,7 +14,10 @@ export class Account {
   }
 
   public kidMode({ enable }: { enable?: boolean } = {}) {
-    return this.fetcher(`/account/kid?v=${enable}`, enable !== undefined ? 'post' : 'get')
+    return this.fetcher(
+      `/account/kid?v=${enable}`,
+      enable !== undefined ? 'post' : 'get',
+    )
   }
 
   public challenges() {

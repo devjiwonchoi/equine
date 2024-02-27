@@ -76,7 +76,7 @@ export class User {
 
   public autocomplete({ term, details = false, friendPrior = false }: GetUser) {
     return this.fetcher(
-      `/player/autocomplete?term=${term}&object=${details}&friend=${friendPrior}`
+      `/player/autocomplete?term=${term}&object=${details}&friend=${friendPrior}`,
     )
   }
 
@@ -85,7 +85,7 @@ export class User {
     return this.fetcher(
       `/user/${username}/note`,
       hasText ? 'post' : 'get',
-      hasText ? new URLSearchParams({ text }) : undefined
+      hasText ? new URLSearchParams({ text }) : undefined,
     )
   }
 
@@ -98,7 +98,7 @@ export class User {
   }
 
   public studies({ username }: { username: string }) {
-      // TODO: replace with stream API
-      return this.fetcher(`/study/by/${username}`);
+    // TODO: replace with stream API
+    return this.fetcher(`/study/by/${username}`)
   }
 }

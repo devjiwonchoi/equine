@@ -85,4 +85,3 @@ describe('board.resign()', () => {
     expect(resign.ok).toBe(true)
   })
 })
-

@@ -30,7 +30,7 @@ export class Bot {
     return this.fetcher(
       `/bot/game/${gameId}/chat`,
       isSendingChat ? 'post' : 'get',
-      isSendingChat ? new URLSearchParams({ room, text }) : undefined
+      isSendingChat ? new URLSearchParams({ room, text }) : undefined,
     )
   }
 

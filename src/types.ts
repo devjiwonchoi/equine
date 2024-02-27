@@ -62,20 +62,20 @@ export type ChallengeOpen = {
 } & Omit<ChallengeAI, 'level'>
 
 export type StudyExport = {
-    studyId?: string
-    chapterId?: string
-    username?: string
-    clocks?: boolean
-    comments?: boolean
-    variations?: boolean
-    source?: boolean
-    orientation?: boolean
+  studyId?: string
+  chapterId?: string
+  username?: string
+  clocks?: boolean
+  comments?: boolean
+  variations?: boolean
+  source?: boolean
+  orientation?: boolean
 }
 
 export type StudyImport = {
-    studyId: string
-    name: string
-    pgn: string
-    orientation?: string
-    variant?: string
+  studyId: string
+  name: string
+  pgn: string
+  orientation?: string
+  variant?: string
 }

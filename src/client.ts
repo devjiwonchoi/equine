@@ -30,7 +30,7 @@ export class Equine {
     this.fetcher = (
       endpoint: string,
       method?: string,
-      body?: URLSearchParams
+      body?: URLSearchParams,
     ) => fetcher({ endpoint, token: this.token, method, body })
 
     // v1 API
