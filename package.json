@@ -2,8 +2,8 @@
   "name": "equine",
   "version": "0.2.1",
   "description": "Minimal Lichess API Client for Node.js",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "license": "MIT",
   "scripts": {
     "build": "bunchee",
@@ -28,11 +28,12 @@
     "verbose": true,
     "testPathIgnorePatterns": [
       "minors.test.ts",
-      "bot.test.ts"
+      "bot.test.ts",
+      "study.test.ts"
     ]
   },
   "author": "Jiwon Choi",
-  "repository": "devjiwonchoi/equine",
+  "repository": "https://github.com/devjiwonchoi/equine.git",
   "bugs": "https://github.com/devjiwonchoi/equine/issues",
   "homepage": "https://equine.vercel.app",
   "files": [
@@ -47,6 +48,6 @@
   ],
   "engines": {
     "node": ">=18.17.0",
-    "pnpm": "8.9.0"
+    "pnpm": "8.15.4"
   }
 }
