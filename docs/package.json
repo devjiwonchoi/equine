@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "next": "^13.5.6",
+    "next": "^14",
     "nextra": "latest",
     "nextra-theme-docs": "latest",
     "react": "^18.2.0",
