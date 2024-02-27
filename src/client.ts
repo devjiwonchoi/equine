@@ -27,8 +27,8 @@ export class Equine {
   // public bot: Bot
 
   constructor(private readonly token: string) {
-    this.fetcher = (endpoint: string, method?: string, body?: URLSearchParams) =>
-      fetcher({ endpoint, token: this.token, method, body })
+    this.fetcher = (endpoint: string, method?: string, body?: URLSearchParams, json?: boolean) =>
+      fetcher({ endpoint, token: this.token, method, body, json })
 
     // v1 API
     this.account = new Account(this.fetcher)

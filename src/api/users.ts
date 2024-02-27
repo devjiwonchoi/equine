@@ -99,6 +99,6 @@ export class User {
 
   public studies({ username }: { username: string }) {
       // TODO: replace with stream API
-      return this.fetcher(`/study/by/${username}`, 'get', new URLSearchParams({ username }));
+      return this.fetcher(`/study/by/${username}`);
   }
 }

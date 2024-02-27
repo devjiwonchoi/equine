@@ -4,20 +4,25 @@ export async function fetcher({
   endpoint,
   token,
   method = 'get',
+  json = true,
   body,
 }: {
   endpoint: string
   token: string
   method?: string
+  json?: boolean
   body?: URLSearchParams
 }) {
-  return (
-    await fetch(`${LICHESS_API_URL}${endpoint}`, {
+    let res = await fetch(`${LICHESS_API_URL}${endpoint}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
       method,
       body,
     })
-  ).json()
+    if (json) {
+        return res.json()
+    } else {
+        return res
+    }
 }
