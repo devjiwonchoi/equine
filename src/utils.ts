@@ -11,13 +11,19 @@ export async function fetcher({
   post?: boolean
   body?: URLSearchParams
 }) {
-  return (
-    await fetch(`${LICHESS_API_URL}${endpoint}`, {
+  try {
+    const fetchOptions = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
       method: post ? 'POST' : 'GET',
       body,
-    })
-  ).json()
+    }
+    const response = await fetch(`${LICHESS_API_URL}${endpoint}`, fetchOptions)
+    const data = await response.json()
+
+    return data
+  } catch (error) {
+    throw error
+  }
 }
