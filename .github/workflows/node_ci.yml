@@ -5,6 +5,10 @@ on:
   pull_request:
     branches: [main]
 
+env: 
+  NODE_ENV: test
+  LICHESS_TOKEN: ${{ secrets.LICHESS_TOKEN }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,15 +33,7 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
 
-      # - name: Create env file
-      #   run: |
-      #     touch .env
-      #     echo LICHESS_TOKEN=${{ secrets.LICHESS_TOKEN }} >> .env
-
       - name: Run Test
-        env:
-          NODE_ENV: test
-          LICHESS_TOKEN: ${{ secrets.LICHESS_TOKEN }}
         run: |
           pnpm build
           pnpm test
