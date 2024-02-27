@@ -3,19 +3,19 @@ export class Challenge {
   constructor(private readonly fetcher: Function) {}
 
   public create({ username }: { username: string }) {
-    return this.fetcher(`/challenge/${username}`, true)
+    return this.fetcher(`/challenge/${username}`, 'post')
   }
 
   public accept({ challengeId }: { challengeId: string }) {
-    return this.fetcher(`/challenge/${challengeId}/accept`, true)
+    return this.fetcher(`/challenge/${challengeId}/accept`, 'post')
   }
 
   public decline({ challengeId }: { challengeId: string }) {
-    return this.fetcher(`/challenge/${challengeId}/decline`, true)
+    return this.fetcher(`/challenge/${challengeId}/decline`, 'post')
   }
 
   public cancel({ challengeId }: { challengeId: string }) {
-    return this.fetcher(`/challenge/${challengeId}/cancel`, true)
+    return this.fetcher(`/challenge/${challengeId}/cancel`, 'post')
   }
 
   // TODO: refactor
@@ -37,7 +37,7 @@ export class Challenge {
     if (color) params.append('color', color)
     if (variant) params.append('variant', variant)
     if (fen) params.append('fen', fen)
-    return this.fetcher(`/challenge/ai`, true, params)
+    return this.fetcher(`/challenge/ai`, 'post', params)
   }
 
   // TODO: refactor
@@ -71,7 +71,7 @@ export class Challenge {
       params.append('users', users.toString())
     }
     if (expiresAt) params.append('expiresAt', expiresAt.toString())
-    return this.fetcher(`/challenge/open`, true, params)
+    return this.fetcher(`/challenge/open`, 'post', params)
   }
 
   public start({
@@ -83,14 +83,14 @@ export class Challenge {
     token1: string
     token2: string
   }) {
-    return this.fetcher(
+        return this.fetcher(
       `/challenge/${gameId}/start-clocks?token1=${token1}&token2=${token2}`,
-      true
+      'post'
     )
   }
 
   public grant({ gameId, seconds }: { gameId: string; seconds: number }) {
-    return this.fetcher(`/round/${gameId}/add-time/${seconds}`, true)
+    return this.fetcher(`/round/${gameId}/add-time/${seconds}`, 'post')
   }
 
   public admin({
@@ -107,6 +107,6 @@ export class Challenge {
       params.append('users', users.toString())
     }
     if (description) params.append('description', description)
-    return this.fetcher(`/challenge/admin`, true, params)
+    return this.fetcher(`/challenge/admin`, 'post', params)
   }
 }

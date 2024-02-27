@@ -6,7 +6,7 @@ export class Bot {
   }
 
   public upgrade() {
-    return this.fetcher(`/bot/account/upgrade`, true)
+    return this.fetcher(`/bot/account/upgrade`, 'post')
   }
 
   public stream({ gameId }: { gameId: string }) {
@@ -14,7 +14,7 @@ export class Bot {
   }
 
   public move({ gameId, move }: { gameId: string; move: string }) {
-    return this.fetcher(`/bot/game/${gameId}/move/${move}`, true)
+    return this.fetcher(`/bot/game/${gameId}/move/${move}`, 'post')
   }
 
   public chat({
@@ -29,16 +29,16 @@ export class Bot {
     const isSendingChat = !!(room && text)
     return this.fetcher(
       `/bot/game/${gameId}/chat`,
-      isSendingChat,
+      isSendingChat ? 'post' : 'get',
       isSendingChat ? new URLSearchParams({ room, text }) : undefined
     )
   }
 
   public abort({ gameId }: { gameId: string }) {
-    return this.fetcher(`/bot/game/${gameId}/abort`, true)
+    return this.fetcher(`/bot/game/${gameId}/abort`, 'post')
   }
 
   public resign({ gameId }: { gameId: string }) {
-    return this.fetcher(`/bot/game/${gameId}/resign`, true)
+    return this.fetcher(`/bot/game/${gameId}/resign`, 'post')
   }
 }

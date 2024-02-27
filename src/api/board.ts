@@ -57,7 +57,7 @@ export class Board {
     const offerDraw = move === 'draw'
     return this.fetcher(
       `/board/game/${gameId}/move/${move}?offeringDraw=${offerDraw}`,
-      true
+      'post'
     )
   }
 
@@ -73,32 +73,32 @@ export class Board {
     const isSendingChat = !!(room && text)
     return this.fetcher(
       `/board/game/${gameId}/chat`,
-      isSendingChat,
+      isSendingChat ? 'post' : 'get',
       isSendingChat ? new URLSearchParams({ room, text }) : undefined
     )
   }
 
   public abort({ gameId }: { gameId: string }) {
-    return this.fetcher(`/board/game/${gameId}/abort`, true)
+    return this.fetcher(`/board/game/${gameId}/abort`, 'post')
   }
 
   public resign({ gameId }: { gameId: string }) {
-    return this.fetcher(`/board/game/${gameId}/resign`, true)
+    return this.fetcher(`/board/game/${gameId}/resign`, 'post')
   }
 
   public draw({ gameId, accept }: { gameId: string; accept: boolean }) {
-    return this.fetcher(`/board/game/${gameId}/draw/${accept}`, true)
+    return this.fetcher(`/board/game/${gameId}/draw/${accept}`, 'post')
   }
 
   public takeback({ gameId, accept }: { gameId: string; accept: boolean }) {
-    return this.fetcher(`/board/game/${gameId}/takeback/${accept}`, true)
+    return this.fetcher(`/board/game/${gameId}/takeback/${accept}`, 'post')
   }
 
   public victory({ gameId }: { gameId: string }) {
-    return this.fetcher(`/board/game/${gameId}/claim-victory`, true)
+    return this.fetcher(`/board/game/${gameId}/claim-victory`, 'post')
   }
 
   public berserk({ gameId }: { gameId: string }) {
-    return this.fetcher(`/board/game/${gameId}/berserk`, true)
+    return this.fetcher(`/board/game/${gameId}/berserk`, 'post')
   }
 }

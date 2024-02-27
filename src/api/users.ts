@@ -23,7 +23,7 @@ export class Users {
   public info({ ids }: GetUsers) {
     if (Array.isArray(ids)) ids = ids.join(',')
     ids = ids.replace(/\s/g, '')
-    return this.fetcher(`/users`, true, ids)
+    return this.fetcher(`/users`, 'post', ids)
   }
 
   public status({ ids }: GetUsers) {
@@ -84,16 +84,21 @@ export class User {
     const hasText = typeof text === 'string' && text.length > 0
     return this.fetcher(
       `/user/${username}/note`,
-      hasText,
+      hasText ? 'post' : 'get',
       hasText ? new URLSearchParams({ text }) : undefined
     )
   }
 
   public follow({ username }: { username: string }) {
-    return this.fetcher(`/rel/follow/${username}`, true)
+    return this.fetcher(`/rel/follow/${username}`, 'post')
   }
 
   public unfollow({ username }: { username: string }) {
-    return this.fetcher(`/rel/unfollow/${username}`, true)
+    return this.fetcher(`/rel/unfollow/${username}`, 'post')
+  }
+
+  public studies({ username }: { username: string }) {
+      // TODO: replace with stream API
+      return this.fetcher(`/study/by/${username}`);
   }
 }
