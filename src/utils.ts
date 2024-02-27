@@ -3,26 +3,27 @@ import { LICHESS_API_URL } from './constants'
 export async function fetcher({
   endpoint,
   token,
-  method = 'get',
-  json = true,
+  method = 'GET',
   body,
 }: {
   endpoint: string
   token: string
   method?: string
-  json?: boolean
   body?: URLSearchParams
 }) {
-    let res = await fetch(`${LICHESS_API_URL}${endpoint}`, {
+  try {
+    const fetchOptions = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
       method,
       body,
-    })
-    if (json) {
-        return res.json()
-    } else {
-        return res
     }
+    const response = await fetch(`${LICHESS_API_URL}${endpoint}`, fetchOptions)
+    const data = await response.json()
+
+    return data
+  } catch (error) {
+    throw error
+  }
 }
