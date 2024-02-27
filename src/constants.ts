@@ -1,3 +1,4 @@
+const isTestEnv = process.env.NODE_ENV === 'test'
 export const LICHESS_API_URL = `https://lichess.${
-  process.env.NODE_ENV === 'test' ? 'dev' : 'org'
+  isTestEnv ? 'dev' : 'org'
 }/api`
