@@ -47,7 +47,7 @@ describe('user.autocomplete()', () => {
       details: true,
     })
     expect(autocomplete.result).toMatchObject(
-      expect.arrayContaining([expect.objectContaining({ id: 'devjiwonchoi' })])
+      expect.arrayContaining([expect.objectContaining({ id: 'devjiwonchoi' })]),
     )
   })
 

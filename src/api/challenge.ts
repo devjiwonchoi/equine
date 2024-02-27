@@ -83,9 +83,9 @@ export class Challenge {
     token1: string
     token2: string
   }) {
-        return this.fetcher(
+    return this.fetcher(
       `/challenge/${gameId}/start-clocks?token1=${token1}&token2=${token2}`,
-      'post'
+      'post',
     )
   }
 
