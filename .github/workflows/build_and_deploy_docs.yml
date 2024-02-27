@@ -22,7 +22,7 @@ jobs:
         run: pnpm install --frozen-lockfile --prefer-offline
 
       - name: Move to Docs Directory
-        run: cd docs
+        run: cd ./docs
 
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
