@@ -1,15 +1,21 @@
-name: Node CI
+name: Build and Test
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - 'test/**'
+      - 'pnpm-lock.yaml'
+  # Instead of pull_request to use secrets:
+  # See https://github.com/orgs/community/discussions/50161
   pull_request_target:
-    branches: [main]
-
-env: 
-  NODE_ENV: test
-  LICHESS_TOKEN: ${{ secrets.LICHESS_TOKEN }}
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - 'test/**'
+      - 'pnpm-lock.yaml'
 
 jobs:
   build:
@@ -23,8 +29,6 @@ jobs:
       - uses: actions/checkout@v3
 
       - uses: pnpm/action-setup@v2
-        with:
-          version: 8.9.0
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -35,7 +39,10 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
 
-      - name: Run Test
-        run: |
-          pnpm build
-          pnpm test
+      - name: Build
+        run: pnpm build
+
+      - name: Test
+        env:
+          LICHESS_TOKEN: ${{ secrets.LICHESS_TOKEN }}
+        run: pnpm test
