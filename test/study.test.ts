@@ -43,3 +43,13 @@ describe('study.import()', () => {
     expect(chapters.status).toBe(200)
   })
 })
+
+describe('user.studies()', () => {
+    it('should retrieve all studies of user', async () => {
+        let studies = await lichess.user.studies({ username: 'nickacide' })
+        // console.log(studies)
+        for await (const chunk of studies) {
+            // console.log(chunk)
+        }
+    })
+})
