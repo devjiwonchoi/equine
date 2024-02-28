@@ -25,36 +25,6 @@ export class JSONStream extends TransformStream {
     }
 }
 
-/// LichessStream is responsible for handling all lichess API stream formats.
-// export class LichessStream extends TransformStream {
-//     constructor({ json = true }: { json?: boolean }) {
-//         super({
-//             start() {},
-//             async transform(chunk: Uint8Array, controller: TransformStreamDefaultController) {
-//                 // chunk = await chunk;
-//                 let decoded = String(chunk);
-//                 if (decoded.trim() === '') {
-//                     controller.enqueue({});
-//                 } else {
-//                     let parsed;
-//                     if (json) {
-//                         try {
-//                             parsed = JSON.parse(decoded);
-//                         } catch (e) {
-//                             controller.error(`Error parsing JSON: ${e}`);
-//                             parsed = decoded;
-//                         };
-//                     } else {
-//                         parsed = decoded;
-//                     }
-//                     controller.enqueue(parsed);
-//                 }
-//             },
-//             flush() {}
-//         });
-//     }
-// }
-
 export async function streamer({
     endpoint,
     token,
@@ -104,12 +74,14 @@ export async function fetcher({
     endpoint,
     token,
     method = 'GET',
-        body,
+    body,
+    json = true
 }: {
     endpoint: string
     token: string
     method?: string
     body?: URLSearchParams
+    json?: boolean
 }) {
     try {
         const fetchOptions = {
@@ -120,9 +92,12 @@ export async function fetcher({
             body,
         }
         const response = await fetch(`${LICHESS_API_URL}${endpoint}`, fetchOptions)
-        const data = await response.json()
-
-        return data
+        if (json) {
+            const data = await response.json()
+            return data
+        } else {
+            return response
+        }
     } catch (error) {
         throw error
     }

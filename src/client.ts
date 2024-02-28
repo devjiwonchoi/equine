@@ -32,7 +32,8 @@ export class Equine {
       endpoint: string,
       method?: string,
       body?: URLSearchParams,
-    ) => fetcher({ endpoint, token: this.token, method, body })
+      json?: boolean
+    ) => fetcher({ endpoint, token: this.token, method, body, json })
 
     this.streamer = async (
         endpoint: string,
