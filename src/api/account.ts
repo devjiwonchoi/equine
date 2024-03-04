@@ -1,35 +1,53 @@
+import { JSONStream } from '../utils.ts'
+
 export class Account {
   constructor(private readonly fetcher: Function) {}
 
-  public profile() {
-    return this.fetcher(`/account`)
+  public async profile() {
+    let response = await this.fetcher(`/api/account`)
+    let json = await response.json()
+    return json
   }
 
-  public email() {
-    return this.fetcher(`/account/email`)
+  public async email() {
+    let response = await this.fetcher(`/api/account/email`)
+    let json = await response.json()
+    return json
   }
 
-  public preferences() {
-    return this.fetcher(`/account/preferences`)
+  public async preferences() {
+    let response = await this.fetcher(`/api/account/preferences`)
+    let json = await response.json()
+    return json
   }
 
-  public kidMode({ enable }: { enable?: boolean } = {}) {
-    return this.fetcher(
-      `/account/kid?v=${enable}`,
-      enable !== undefined ? 'post' : 'get',
-    )
+  public async kidMode({ enable }: { enable?: boolean } = {}) {
+    let response = await this.fetcher(
+      `/api/account/kid?v=${enable}`,
+      enable !== undefined ? 'post' : 'get')
+    let json = await response.json()
+    return json
+
   }
 
-  public challenges() {
-    return this.fetcher(`/challenge`)
+  public async challenges() {
+    let response = await this.fetcher(`/api/challenge`)
+    let json = await response.json()
+    return json
   }
 
-  public ongoing({ limit }: { limit?: number } = {}) {
-    return this.fetcher(`/account/playing?nb=${limit}`)
+  public async ongoing({ limit }: { limit?: number } = {}) {
+    let response = await this.fetcher(`/api/account/playing?nb=${limit}`)
+    let json = await response.json()
+    return json
   }
 
-  // TODO: NDJSON
-  // public following() {
-  //   return this.fetcher(`/rel/following`)
-  // }
+  public async following() {
+    let response = await this.fetcher(`/api/rel/following`)
+    // Decode the stream and then parse it into JSON
+    let stream = response.body
+    let text = await stream.pipeThrough(new TextDecoderStream())
+    let json = await text.pipeThrough(new JSONStream())
+    return json
+  }
 }
