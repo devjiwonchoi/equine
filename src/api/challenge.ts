@@ -3,26 +3,26 @@ export class Challenge {
   constructor(private readonly fetcher: Function) {}
 
   public async create({ username }: { username: string }) {
-    let response = await this.fetcher(`/api/challenge/${username}`, 'post')
-    let json = await response.json()
+    const response = await this.fetcher(`/api/challenge/${username}`, 'post')
+    const json = await response.json()
     return json
   }
 
   public async accept({ challengeId }: { challengeId: string }) {
-    let response = await this.fetcher(`/api/challenge/${challengeId}/accept`, 'post')
-    let json = await response.json()
+    const response = await this.fetcher(`/api/challenge/${challengeId}/accept`, 'post')
+    const json = await response.json()
     return json
   }
 
   public async decline({ challengeId }: { challengeId: string }) {
-    let response = await this.fetcher(`/api/challenge/${challengeId}/decline`, 'post')
-    let json = await response.json()
+    const response = await this.fetcher(`/api/challenge/${challengeId}/decline`, 'post')
+    const json = await response.json()
     return json
   }
 
   public async cancel({ challengeId }: { challengeId: string }) {
-    let response = await this.fetcher(`/api/challenge/${challengeId}/cancel`, 'post')
-    let json = await response.json()
+    const response = await this.fetcher(`/api/challenge/${challengeId}/cancel`, 'post')
+    const json = await response.json()
     return json
   }
 
@@ -45,8 +45,8 @@ export class Challenge {
     if (color) params.append('color', color)
     if (variant) params.append('variant', variant)
     if (fen) params.append('fen', fen)
-    let response = await this.fetcher(`/api/challenge/ai`, 'post', params)
-    let json = await response.json()
+    const response = await this.fetcher(`/api/challenge/ai`, 'post', params)
+    const json = await response.json()
     return json
   }
 
@@ -81,8 +81,8 @@ export class Challenge {
       params.append('users', users.toString())
     }
     if (expiresAt) params.append('expiresAt', expiresAt.toString())
-    let response = await this.fetcher(`/api/challenge/open`, 'post', params)
-    let json = await response.json()
+    const response = await this.fetcher(`/api/challenge/open`, 'post', params)
+    const json = await response.json()
     return json
   }
 
@@ -95,16 +95,16 @@ export class Challenge {
     token1: string
     token2: string
   }) {
-    let response = await this.fetcher(
+    const response = await this.fetcher(
       `/api/challenge/${gameId}/start-clocks?token1=${token1}&token2=${token2}`,
       'post')
-    let json = await response.json()
+    const json = await response.json()
     return json
   }
 
   public async grant({ gameId, seconds }: { gameId: string; seconds: number }) {
-    let response = await this.fetcher(`/api/round/${gameId}/add-time/${seconds}`, 'post')
-    let json = await response.json()
+    const response = await this.fetcher(`/api/round/${gameId}/add-time/${seconds}`, 'post')
+    const json = await response.json()
     return json
   }
 
@@ -122,8 +122,8 @@ export class Challenge {
       params.append('users', users.toString())
     }
     if (description) params.append('description', description)
-    let response = await this.fetcher(`/api/challenge/admin`, 'post', params)
-    let json = await response.json()
+    const response = await this.fetcher(`/api/challenge/admin`, 'post', params)
+    const json = await response.json()
     return json
   }
 }

@@ -50,17 +50,17 @@ export class Board {
   // }
 
   public async stream({ gameId }: { gameId: string }) {
-    let response = await this.fetcher(`/api/board/game/stream/${gameId}`)
-    let json = await response.json()
+    const response = await this.fetcher(`/api/board/game/stream/${gameId}`)
+    const json = await response.json()
     return json
   }
 
   public async move({ gameId, move }: { gameId: string; move: string }) {
     const offerDraw = move === 'draw'
-    let response = await this.fetcher(
+    const response = await this.fetcher(
       `/api/board/game/${gameId}/move/${move}?offeringDraw=${offerDraw}`,
       'post')
-    let json = await response.json()
+    const json = await response.json()
     return json
   }
 
@@ -74,47 +74,47 @@ export class Board {
     text?: string
   }) {
     const isSendingChat = !!(room && text)
-    let response = await this.fetcher(
+    const response = await this.fetcher(
       `/api/board/game/${gameId}/chat`,
       isSendingChat ? 'post' : 'get',
       isSendingChat ? new URLSearchParams({ room, text }) : undefined)
-    let json = await response.json()
+    const json = await response.json()
     return json
   }
 
   public async abort({ gameId }: { gameId: string }) {
-    let response = await this.fetcher(`/api/board/game/${gameId}/abort`, 'post')
-    let json = await response.json()
+    const response = await this.fetcher(`/api/board/game/${gameId}/abort`, 'post')
+    const json = await response.json()
     return json
   }
 
   public async resign({ gameId }: { gameId: string }) {
-    let response = await this.fetcher(`/api/board/game/${gameId}/resign`, 'post')
-    let json = await response.json()
+    const response = await this.fetcher(`/api/board/game/${gameId}/resign`, 'post')
+    const json = await response.json()
     return json
   }
 
   public async draw({ gameId, accept }: { gameId: string; accept: boolean }) {
-    let response = await this.fetcher(`/api/board/game/${gameId}/draw/${accept}`, 'post')
-    let json = await response.json()
+    const response = await this.fetcher(`/api/board/game/${gameId}/draw/${accept}`, 'post')
+    const json = await response.json()
     return json
   }
 
   public async takeback({ gameId, accept }: { gameId: string; accept: boolean }) {
-    let response = await this.fetcher(`/api/board/game/${gameId}/takeback/${accept}`, 'post')
-    let json = await response.json()
+    const response = await this.fetcher(`/api/board/game/${gameId}/takeback/${accept}`, 'post')
+    const json = await response.json()
     return json
   }
 
   public async victory({ gameId }: { gameId: string }) {
-    let response = await this.fetcher(`/api/board/game/${gameId}/claim-victory`, 'post')
-    let json = await response.json()
+    const response = await this.fetcher(`/api/board/game/${gameId}/claim-victory`, 'post')
+    const json = await response.json()
     return json
   }
 
   public async berserk({ gameId }: { gameId: string }) {
-    let response = await this.fetcher(`/api/board/game/${gameId}/berserk`, 'post')
-    let json = await response.json()
+    const response = await this.fetcher(`/api/board/game/${gameId}/berserk`, 'post')
+    const json = await response.json()
     return json
   }
 }

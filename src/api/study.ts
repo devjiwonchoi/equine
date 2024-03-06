@@ -12,15 +12,15 @@ export class Study {
     source = false,
     orientation = false,
   }: StudyExport) {
-    let params = new URLSearchParams({
+    const params = new URLSearchParams({
       clocks: String(clocks),
       comments: String(comments),
       variations: String(variations),
       source: String(source),
       orientation: String(orientation),
     })
-    let response = await this.fetcher(`/api/study/${studyId}/${chapterId}.pgn?${params}`, 'get', undefined, false)
-    let text = await response.text()
+    const response = await this.fetcher(`/api/study/${studyId}/${chapterId}.pgn?${params}`, 'get', undefined, false)
+    const text = await response.text()
     return text
   }
 
@@ -33,15 +33,15 @@ export class Study {
     source = false,
     orientation = false,
   }: StudyExport) {
-    let params = new URLSearchParams({
+    const params = new URLSearchParams({
       clocks: String(clocks),
       comments: String(comments),
       variations: String(variations),
       source: String(source),
       orientation: String(orientation),
     })
-    let response = await this.fetcher(`/api/study/${studyId}.pgn?${params}`, 'get', undefined, false)
-    let text = await response.text()
+    const response = await this.fetcher(`/api/study/${studyId}.pgn?${params}`, 'get', undefined, false)
+    const text = await response.text()
     return text
   }
 
@@ -54,26 +54,26 @@ export class Study {
     source = false,
     orientation = false,
   }: StudyExport) {
-    let params = new URLSearchParams({
+    const params = new URLSearchParams({
       clocks: String(clocks),
       comments: String(comments),
       variations: String(variations),
       source: String(source),
       orientation: String(orientation),
     })
-    let response = await this.fetcher(
+    const response = await this.fetcher(
       `/study/by/${username}/export.pgn?${params}`,
       'get',
       undefined,
       false)
-    let json = await response.json()
+    const json = await response.json()
     return json
   }
 
   /// Retrieve only the study headers (metadata) of a study.
   public async meta({ studyId }: { studyId: string }) {
-    let response = await this.fetcher(`/api/study/${studyId}.pgn`, 'head', undefined, false)
-    let text = await response.text()
+    const response = await this.fetcher(`/api/study/${studyId}.pgn`, 'head', undefined, false)
+    const text = await response.text()
     return text
   }
 
@@ -85,13 +85,13 @@ export class Study {
     orientation = 'white',
     variant = 'standard',
   }: StudyImport) {
-    let params = new URLSearchParams({ name, pgn, orientation, variant })
-    let response = await this.fetcher(
+    const params = new URLSearchParams({ name, pgn, orientation, variant })
+    const response = await this.fetcher(
       `/api/study/${studyId}/import-pgn?${params}`,
       'post',
       undefined,
       false)
-    let text = await response.text()
+    const text = await response.text()
     return text
   }
 
