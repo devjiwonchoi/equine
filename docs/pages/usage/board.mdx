@@ -1,0 +1,73 @@
+# Board
+
+> Lichess API Docs - [Board](https://lichess.org/api#tag/Board)
+
+### Stream incoming events
+
+```ts
+lichess.board.events()
+```
+
+### Stream Board game state
+
+```ts
+lichess.board.stream({ gameId: string })
+```
+
+### Make a Board move
+
+```ts
+lichess.board.move({ gameId: string, move: string })
+```
+
+### Write in the chat
+
+```ts
+lichess.board.chat({
+  gameId: string
+  room?: 'player' | 'spectator'
+  text?: string
+})
+```
+
+### Fetch the game chat
+
+```ts
+lichess.board.chat.fetch({ gameId: string })
+```
+
+### Abort a game
+
+```ts
+lichess.board.abort({ gameId: string })
+```
+
+### Resign a game
+
+```ts
+lichess.board.resign({ gameId: string })
+```
+
+### Handle draw offers
+
+```ts
+lichess.board.draw({ gameId: string, accept: boolean })
+```
+
+### Handle takeback offers
+
+```ts
+lichess.board.takeback({ gameId: string, accept: boolean })
+```
+
+### Claim victory of a game
+
+```ts
+lichess.board.victory({ gameId: string })
+```
+
+### Berserk a tournament game
+
+```ts
+lichess.board.berserk({ gameId: string })
+```

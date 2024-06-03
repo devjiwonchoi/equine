@@ -1,0 +1,21 @@
+{
+  "account": "Account",
+  "users": "Users",
+  "tv": {
+    "display": "hidden"
+  },
+  "board": "Board",
+  "bot": {
+    "display": "hidden"
+  },
+  "challenges": "Challenges",
+  "simuls": {
+    "display": "hidden"
+  },
+  "messaging": {
+    "display": "hidden"
+  },
+  "analysis": {
+    "display": "hidden"
+  }
+}

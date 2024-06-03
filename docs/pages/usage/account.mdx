@@ -1,0 +1,57 @@
+# Account
+
+> [Lichess API Docs - Account](https://lichess.org/api#tag/Account)
+
+### Get my profile
+
+```ts
+lichess.account.info()
+```
+
+### Get my email address
+
+```ts
+lichess.account.email()
+```
+
+### Get my preferences
+
+```ts
+lichess.account.preferences()
+```
+
+### Get my kid mode status
+
+```ts
+lichess.account.kidMode()
+```
+
+### Set my kid mode status
+
+```ts
+lichess.account.kidMode({ enable?: boolean })
+```
+
+### List your challenges
+
+> This feature is under the [Challenges](https://lichess.org/api#tag/Challenges/operation/apiAccountChallenges) part.
+
+```ts
+lichess.account.challenges()
+```
+
+### Get my ongoing games
+
+> This feature is under the [Games](https://lichess.org/api#tag/Games/operation/apiAccountPlaying) part.
+
+```ts
+lichess.account.ongoing({ limit?: number })
+```
+
+### Get users followed by the logged in user
+
+> This feature is under the [Relations](https://lichess.org/api#tag/Relations/operation/apiUserFollowing) part.
+
+```ts
+lichess.account.following()
+```

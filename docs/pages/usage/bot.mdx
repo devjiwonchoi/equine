@@ -1,0 +1,55 @@
+# Bot
+
+> Lichess API Docs - [Bot](https://lichess.org/api#tag/Bot)
+
+### Get online bots
+
+```ts
+lichess.bot.online(nb?: number)
+```
+
+### Upgrade to Bot account
+
+```ts
+lichess.bot.UPGRADE()
+```
+
+### Stream Bot game state
+
+```ts
+lichess.bot.stream(gameId: string)
+```
+
+### Make a Bot move
+
+```ts
+lichess.bot.move({ gameId: string, move: string })
+```
+
+### Write in the chat
+
+```ts
+lichess.bot.chat({
+  gameId: string,
+  room: 'player' | 'spectator',
+  text: string,
+})
+```
+
+### Fetch the game chat
+
+```ts
+lichess.bot.chat.fetch({ gameId: string })
+```
+
+### Abort a game
+
+```ts
+lichess.bot.abort(gameId: string)
+```
+
+### Resign a game
+
+```ts
+lichess.bot.resign(gameId: string)
+```
