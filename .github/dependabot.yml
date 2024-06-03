@@ -4,3 +4,10 @@ updates:
     directory: '/'
     schedule:
       interval: 'monthly'
+    reviewers:
+      - 'devjiwonchoi'
+    groups:
+      prod:
+        dependency-type: 'production'
+      dev:
+        dependency-type: 'development'
