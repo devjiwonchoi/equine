@@ -7,7 +7,6 @@ updates:
     reviewers:
       - 'devjiwonchoi'
     groups:
-      prod:
-        dependency-type: 'production'
-      dev:
-        dependency-type: 'development'
+      all:
+        patterns:
+          - '*'
