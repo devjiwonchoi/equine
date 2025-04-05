@@ -7,8 +7,10 @@
   "license": "MIT",
   "scripts": {
     "build": "bunchee",
+    "test": "jest",
     "format": "prettier --write .",
-    "codegen": "openapi-ts"
+    "codegen": "openapi-ts",
+    "prepublishOnly": "pnpm build"
   },
   "dependencies": {
     "@hey-api/client-fetch": "^0.10.0"
@@ -28,10 +30,6 @@
     "semi": false,
     "singleQuote": true
   },
-  "author": "Jiwon Choi",
-  "repository": "https://github.com/devjiwonchoi/equine.git",
-  "bugs": "https://github.com/devjiwonchoi/equine/issues",
-  "homepage": "https://equine.vercel.app",
   "files": [
     "dist"
   ],
@@ -43,6 +41,11 @@
     "node",
     "openapi"
   ],
+  "author": "Jiwon Choi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devjiwonchoi/equine.git"
+  },
   "engines": {
     "node": ">=18.18.0"
   },
