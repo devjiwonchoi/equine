@@ -15,11 +15,3 @@
 ## Documentation
 
 Visit [https://equine.vercel.app](https://equine.vercel.app) to view the full documentation.
-
-## Contributing
-
-Please see our [contributing.md](./contributing.md).
-
-### Good First Issues
-
-We have a list of [good first issues](https://github.com/devjiwonchoi/equine/labels/good%20first%20issue) that contain bugs that have a relatively limited scope. This is a great place to get started, gain experience, and get familiar with our contribution process.
