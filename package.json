@@ -17,7 +17,7 @@
     "@hey-api/openapi-ts": "^0.66.3",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.0.2",
-    "bunchee": "^5.1.5",
+    "bunchee": "^6.5.0",
     "dotenv": "^16.4.7",
     "jest": "^29.7.0",
     "prettier": "^3.2.5",
