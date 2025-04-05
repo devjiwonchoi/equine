@@ -12,6 +12,15 @@
   </a>
 </p>
 
+```ts
+import { initialize, accountMe } from 'equine'
+
+initialize(process.env.LICHESS_API_TOKEN!)
+
+const res = await accountMe()
+console.log(res.data?.username)
+```
+
 ## Documentation
 
 Visit [https://equine.vercel.app](https://equine.vercel.app) to view the full documentation.
