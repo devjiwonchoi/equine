@@ -1,17 +1,17 @@
 {
   "name": "equine",
-  "version": "0.2.1",
+  "version": "1.0.0-alpha.0",
   "description": "Minimal Lichess API Client for Node.js",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "scripts": {
     "build": "bunchee",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "codegen": "openapi-ts"
   },
   "dependencies": {
-    "@hey-api/client-fetch": "^0.10.0",
-    "openapi-fetch": "^0.13.5"
+    "@hey-api/client-fetch": "^0.10.0"
   },
   "devDependencies": {
     "@hey-api/openapi-ts": "^0.66.3",
