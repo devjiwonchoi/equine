@@ -10,7 +10,12 @@
     "test": "NODE_ENV=test dotenv -e .env jest",
     "format": "prettier --write ."
   },
+  "dependencies": {
+    "@hey-api/client-fetch": "^0.10.0",
+    "openapi-fetch": "^0.13.5"
+  },
   "devDependencies": {
+    "@hey-api/openapi-ts": "^0.66.3",
     "@swc/core": "^1.3.102",
     "@swc/jest": "^0.2.29",
     "@types/jest": "^29.5.10",
@@ -51,11 +56,12 @@
     "lichess",
     "api",
     "client",
-    "node"
+    "node",
+    "openapi"
   ],
   "engines": {
-    "node": ">=18.17.0",
-    "pnpm": "8.15.4"
+    "node": ">=18.18.0",
+    "pnpm": "9.6.0"
   },
-  "packageManager": "pnpm@8.15.4"
+  "packageManager": "pnpm@9.6.0"
 }
