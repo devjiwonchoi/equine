@@ -1,7 +1,9 @@
 # equine 🐴
 
 > [!NOTE]
-> Equine follows the OpenAPI Specification provided by [Lichess API](https://lichess.org/api).
+> Equine follows the OpenAPI Specification provided by [Lichess API](https://lichess.org/api), and requires its API Token.
+>
+> [Generate Lichess API Token](https://lichess.org/account/oauth/token)
 
 ```ts
 import { initialize, accountMe } from 'equine'
