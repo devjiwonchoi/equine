@@ -1,1 +1,0 @@
-export { Equine } from './client'
