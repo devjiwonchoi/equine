@@ -13,10 +13,10 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@hey-api/client-fetch": "^0.11.0"
+    "@hey-api/client-fetch": "^0.13.1"
   },
   "devDependencies": {
-    "@hey-api/openapi-ts": "^0.77.0",
+    "@hey-api/openapi-ts": "^0.80.1",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.0.8",
     "bunchee": "^6.5.0",
