@@ -16,9 +16,9 @@
     "@hey-api/client-fetch": "^0.13.1"
   },
   "devDependencies": {
-    "@hey-api/openapi-ts": "^0.88.0",
+    "@hey-api/openapi-ts": "^0.89.2",
     "@types/jest": "^30.0.0",
-    "@types/node": "^24.0.8",
+    "@types/node": "^25.0.3",
     "bunchee": "^6.5.0",
     "dotenv": "^17.0.0",
     "jest": "^30.0.3",
