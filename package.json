@@ -24,7 +24,7 @@
     "jest": "^30.0.3",
     "prettier": "^3.2.5",
     "ts-jest": "^29.3.1",
-    "typescript": "^6.0.2"
+    "typescript": "^7.0.2"
   },
   "prettier": {
     "semi": false,
