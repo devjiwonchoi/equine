@@ -14,5 +14,6 @@
     "module": "preserve",
     "moduleDetection": "force",
     "lib": ["esnext", "dom"]
-  }
+  },
+  "include": ["src"]
 }
