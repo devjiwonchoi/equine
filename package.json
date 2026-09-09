@@ -9,7 +9,7 @@
     "build": "bunchee",
     "test": "jest",
     "format": "prettier --write .",
-    "bundle": "redocly bundle https://raw.githubusercontent.com/lichess-org/api/master/doc/specs/lichess-api.yaml -o openapi.bundled.yaml",
+    "bundle": "node scripts/bundle.mjs",
     "codegen": "pnpm bundle && openapi-ts",
     "prepublishOnly": "pnpm build"
   },
