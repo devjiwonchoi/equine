@@ -42,10 +42,13 @@ to clear the token.
 
 ## API reference
 
-Every Lichess endpoint is exposed as a named function (`accountMe`,
-`apiUsersStatus`, `challengeCreate`, …), fully typed with inline docs from the
-spec. See the [Lichess API documentation](https://lichess.org/api) for endpoint
-details.
+Every Lichess endpoint is exposed as a named function. The name is the
+operation's `operationId` from the spec (e.g. `accountMe`, `apiUsersStatus`,
+`challengeCreate`), and each function carries the endpoint's summary and
+description as JSDoc.
+
+For a full, searchable index of every generated function and its types, see
+[`src/client/sdk.gen.ts`](./src/client/sdk.gen.ts).
 
 ## How it stays current
 
