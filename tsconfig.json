@@ -13,6 +13,7 @@
     "target": "esnext",
     "module": "preserve",
     "moduleDetection": "force",
-    "lib": ["esnext"]
-  }
+    "lib": ["esnext", "dom"]
+  },
+  "include": ["src"]
 }
