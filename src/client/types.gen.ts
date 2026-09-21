@@ -361,6 +361,14 @@ export type PerfStat = {
             nb: {
                 cur: {
                     v: number;
+                    from?: {
+                        at: string;
+                        gameId: string;
+                    };
+                    to?: {
+                        at: string;
+                        gameId: string;
+                    };
                 };
                 max: {
                     v: number;
@@ -377,6 +385,14 @@ export type PerfStat = {
             time: {
                 cur: {
                     v: number;
+                    from?: {
+                        at: string;
+                        gameId: string;
+                    };
+                    to?: {
+                        at: string;
+                        gameId: string;
+                    };
                 };
                 max: {
                     v: number;
@@ -840,6 +856,10 @@ export type GamePlayerUser = {
         };
     };
     team?: string;
+    /**
+     * Whether the player berserked. Only present in Arena tournament games.
+     */
+    berserk?: boolean;
 };
 
 /**
@@ -944,10 +964,12 @@ export type GameJson = {
     };
 };
 
-export type SpectatorGameChat = Array<{
-    text: string;
-    user: string;
-}>;
+export type SpectatorGameChat = {
+    lines: Array<{
+        text: string;
+        user: string;
+    }>;
+};
 
 export type GameStatusId = 10 | 20 | 25 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 60;
 
@@ -969,10 +991,12 @@ export type GameStreamGame = {
         white?: {
             userId?: string;
             rating?: number;
+            provisional?: boolean;
         };
         black?: {
             userId?: string;
             rating?: number;
+            provisional?: boolean;
         };
     };
     winner?: GameColor;
@@ -982,15 +1006,15 @@ export type GameStream = Array<GameStreamGame>;
 
 export type GameSource = 'lobby' | 'friend' | 'ai' | 'api' | 'tournament' | 'position' | 'import' | 'importlive' | 'simul' | 'relay' | 'pool' | 'arena' | 'swiss';
 
+export type GameStatus = {
+    id: GameStatusId;
+    name: GameStatusName;
+};
+
 export type Variant = {
     key: VariantKey;
     name: string;
     short?: string;
-};
-
-export type GameStatus = {
-    id: GameStatusId;
-    name: GameStatusName;
 };
 
 export type MoveStreamEntry = {
@@ -1462,6 +1486,10 @@ export type StudyImportPgnChapters = {
          */
         status?: string;
     }>;
+    /**
+     * An error message, if some of the games could not be imported.
+     */
+    error?: string | null;
 };
 
 export type StudyMetadata = {
@@ -2654,7 +2682,7 @@ export type BulkPairing = {
     pairAt: number;
     pairedAt: number | null;
     rated: boolean;
-    startClocksAt: number;
+    startClocksAt: number | null;
     scheduledAt: number;
 };
 
@@ -4169,18 +4197,28 @@ export type ApiAccountPlayingResponses = {
             color: GameColor;
             lastMove: string;
             source: GameSource;
-            status?: GameStatusName;
+            status?: GameStatus;
             variant: Variant;
             speed: Speed;
             perf: PerfType;
             rated: boolean;
+            rating: number;
             hasMoved: boolean;
             opponent: {
                 id: string;
                 username: string;
                 rating?: number;
                 ratingDiff?: number;
-                ai?: number;
+            } | {
+                id: null;
+                username: string;
+            } | {
+                id: null;
+                username: string;
+                /**
+                 * AI level, from 1 to 8.
+                 */
+                ai: number;
             };
             isMyTurn: boolean;
             secondsLeft: number;
@@ -4593,7 +4631,7 @@ export type ApiTournamentPostData = {
         description?: string;
         /**
          * Make the tournament private, and restrict access with a password.
-         * You can also [generate user-specific entry codes](https://github.com/lichess-org/api/tree/master/example/tournament-entry-code)
+         * You can also [generate user-specific entry codes](https://github.com/lichess-org/api-demo/tree/master/example/tournament-entry-code)
          * based on this password.
          *
          */
@@ -4809,7 +4847,7 @@ export type ApiTournamentJoinData = {
     body?: {
         /**
          * The tournament password, if one is required.
-         * Can also be a [user-specific entry code](https://github.com/lichess-org/api/tree/master/example/tournament-entry-code)
+         * Can also be a [user-specific entry code](https://github.com/lichess-org/api-demo/tree/master/example/tournament-entry-code)
          * generated and shared by the organizer.
          *
          */
@@ -6974,8 +7012,11 @@ export type TeamIdUsersResponses = {
         joinedTeamAt?: number;
         id: string;
         name: string;
+        flair?: Flair;
         title?: Title;
+        patron?: Patron;
         patronColor?: PatronColor;
+        url?: string;
     };
 };
 
@@ -8562,7 +8603,9 @@ export type BulkPairingListResponses = {
     /**
      * The list of bulk pairing the logged in user created.
      */
-    200: Array<BulkPairing>;
+    200: {
+        bulks: Array<BulkPairing>;
+    };
 };
 
 export type BulkPairingListResponse = BulkPairingListResponses[keyof BulkPairingListResponses];
